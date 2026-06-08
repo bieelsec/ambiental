@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -35,9 +35,7 @@
       --gold: #c4973a;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -56,7 +54,6 @@
       opacity: .4;
     }
 
-    /* PROGRESS BAR */
     #progress-bar {
       position: fixed;
       top: 0;
@@ -69,7 +66,6 @@
       border-radius: 0 2px 2px 0;
     }
 
-    /* HEADER */
     header {
       position: fixed;
       top: 0;
@@ -149,9 +145,7 @@
       transition: width .3s ease;
     }
 
-    nav.menu a:hover::after {
-      width: 100%;
-    }
+    nav.menu a:hover::after { width: 100%; }
 
     .nav-cta {
       background: var(--forest);
@@ -171,13 +165,10 @@
       box-shadow: 0 8px 24px rgba(26, 74, 30, .35);
     }
 
-    .nav-cta::after {
-      display: none !important;
-    }
+    .nav-cta::after { display: none !important; }
 
     .hamburger {
       display: none;
-      /* shown via mobile override */
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
@@ -193,7 +184,6 @@
       transition: .3s;
     }
 
-    /* LOCATION RIBBON */
     .location-ribbon {
       position: fixed;
       top: 76px;
@@ -216,9 +206,7 @@
       animation: fadeIn .6s .8s forwards;
     }
 
-    .location-ribbon span {
-      opacity: .55;
-    }
+    .location-ribbon span { opacity: .55; }
 
     .location-ribbon .dot {
       width: 5px;
@@ -230,20 +218,10 @@
     }
 
     @keyframes pulse-dot {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .4;
-        transform: scale(.7);
-      }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(.7); }
     }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -301,14 +279,8 @@
       animation: fadeUp .7s .2s forwards;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--sage);
-    }
-
-    .hero h1 .brand-d {
-      color: var(--gold);
-    }
+    .hero h1 em { font-style: italic; color: var(--sage); }
+    .hero h1 .brand-d { color: var(--gold); }
 
     .hero-location {
       display: inline-flex;
@@ -365,13 +337,8 @@
       box-shadow: 0 14px 36px rgba(26, 74, 30, .38);
     }
 
-    .btn-main svg {
-      transition: transform .25s;
-    }
-
-    .btn-main:hover svg {
-      transform: translateX(5px);
-    }
+    .btn-main svg { transition: transform .25s; }
+    .btn-main:hover svg { transform: translateX(5px); }
 
     .btn-ghost {
       text-decoration: none;
@@ -386,10 +353,7 @@
       transition: color .2s, border-color .2s;
     }
 
-    .btn-ghost:hover {
-      color: var(--verde);
-      border-color: var(--verde);
-    }
+    .btn-ghost:hover { color: var(--verde); border-color: var(--verde); }
 
     .hero-stats {
       display: flex;
@@ -420,10 +384,7 @@
       display: block;
     }
 
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
+    .hero-right { position: relative; overflow: hidden; }
 
     .hero-right img {
       position: absolute;
@@ -436,9 +397,7 @@
       transition: transform 8s ease;
     }
 
-    .hero-right:hover img {
-      transform: scale(1.03);
-    }
+    .hero-right:hover img { transform: scale(1.03); }
 
     .hero-right::after {
       content: "";
@@ -462,20 +421,10 @@
     }
 
     @keyframes blobPulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: .8;
-      }
-
-      50% {
-        transform: scale(1.15);
-        opacity: 1;
-      }
+      0%, 100% { transform: scale(1); opacity: .8; }
+      50% { transform: scale(1.15); opacity: 1; }
     }
 
-    /* SOBRE STRIP */
     .sobre-strip {
       background: var(--forest);
       padding: 28px 5%;
@@ -485,10 +434,7 @@
       align-items: center;
     }
 
-    .strip-divider {
-      background: rgba(255, 255, 255, .12);
-      height: 50px;
-    }
+    .strip-divider { background: rgba(255, 255, 255, .12); height: 50px; }
 
     .strip-item {
       display: flex;
@@ -499,9 +445,7 @@
       opacity: 0;
     }
 
-    .strip-item.visible {
-      animation: fadeUp .5s forwards;
-    }
+    .strip-item.visible { animation: fadeUp .5s forwards; }
 
     .strip-icon {
       width: 44px;
@@ -515,33 +459,11 @@
       font-size: 20px;
     }
 
-    .strip-text strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 2px;
-    }
+    .strip-text strong { display: block; font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; }
+    .strip-text span { font-size: 12px; opacity: .65; letter-spacing: .04em; }
 
-    .strip-text span {
-      font-size: 12px;
-      opacity: .65;
-      letter-spacing: .04em;
-    }
-
-    /* SECTIONS */
-    .section {
-      padding: 100px 5%;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 12px;
-    }
+    .section { padding: 100px 5%; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
 
     .section-title {
       font-family: 'Playfair Display', serif;
@@ -552,43 +474,21 @@
       max-width: 560px;
     }
 
-    .section-title em {
-      font-style: italic;
-      color: var(--sage);
-    }
+    .section-title em { font-style: italic; color: var(--sage); }
 
-    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(32px);
       transition: opacity .7s ease, transform .7s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
 
-    .reveal-delay-1 {
-      transition-delay: .1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: .2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: .3s;
-    }
-
-    .reveal-delay-4 {
-      transition-delay: .4s;
-    }
-
-    /* CORES */
-    .cores-section {
-      background: white;
-    }
+    .cores-section { background: white; }
 
     .cores-header {
       display: flex;
@@ -599,18 +499,9 @@
       flex-wrap: wrap;
     }
 
-    .cores-header p {
-      max-width: 380px;
-      color: var(--warm-grey);
-      font-size: 15px;
-      line-height: 1.7;
-    }
+    .cores-header p { max-width: 380px; color: var(--warm-grey); font-size: 15px; line-height: 1.7; }
 
-    .cores-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+    .cores-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
     .cor-card {
       border-radius: 20px;
@@ -621,47 +512,15 @@
       aspect-ratio: 3/4;
     }
 
-    .cor-card:hover {
-      transform: translateY(-10px) scale(1.01);
-      box-shadow: 0 28px 56px rgba(0, 0, 0, .16);
-    }
-
-    .cor-card .cor-bg {
-      position: absolute;
-      inset: 0;
-      transition: transform .5s ease;
-    }
-
-    .cor-card:hover .cor-bg {
-      transform: scale(1.08);
-    }
-
-    .cor-verde .cor-bg {
-      background: linear-gradient(160deg, #2d6a30 0%, #81c784 100%);
-    }
-
-    .cor-amarelo .cor-bg {
-      background: linear-gradient(160deg, #e6a817 0%, #ffd54f 100%);
-    }
-
-    .cor-branco .cor-bg {
-      background: linear-gradient(160deg, #d8d0c4 0%, #f5f0e8 100%);
-    }
-
-    .cor-natural .cor-bg {
-      background: linear-gradient(160deg, #8a6a3e 0%, #c8a97e 100%);
-    }
-
-    .cor-card .cor-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, .55) 0%, transparent 55%);
-      transition: opacity .3s;
-    }
-
-    .cor-card:hover .cor-overlay {
-      opacity: .7;
-    }
+    .cor-card:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 28px 56px rgba(0, 0, 0, .16); }
+    .cor-card .cor-bg { position: absolute; inset: 0; transition: transform .5s ease; }
+    .cor-card:hover .cor-bg { transform: scale(1.08); }
+    .cor-verde .cor-bg { background: linear-gradient(160deg, #2d6a30 0%, #81c784 100%); }
+    .cor-amarelo .cor-bg { background: linear-gradient(160deg, #e6a817 0%, #ffd54f 100%); }
+    .cor-branco .cor-bg { background: linear-gradient(160deg, #d8d0c4 0%, #f5f0e8 100%); }
+    .cor-natural .cor-bg { background: linear-gradient(160deg, #8a6a3e 0%, #c8a97e 100%); }
+    .cor-card .cor-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .55) 0%, transparent 55%); transition: opacity .3s; }
+    .cor-card:hover .cor-overlay { opacity: .7; }
 
     .cor-card .cor-info {
       position: absolute;
@@ -674,28 +533,10 @@
       transition: transform .35s ease;
     }
 
-    .cor-card:hover .cor-info {
-      transform: translateY(0);
-    }
-
-    .cor-info .emoji {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .cor-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .cor-info p {
-      font-size: 12px;
-      opacity: .8;
-      letter-spacing: .05em;
-    }
+    .cor-card:hover .cor-info { transform: translateY(0); }
+    .cor-info .emoji { font-size: 28px; display: block; margin-bottom: 8px; }
+    .cor-info h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .cor-info p { font-size: 12px; opacity: .8; letter-spacing: .05em; }
 
     .cor-card .cor-tag {
       position: absolute;
@@ -713,7 +554,6 @@
       border-radius: 50px;
     }
 
-    /* MISSAO */
     .missao-section {
       background: var(--cream);
       display: grid;
@@ -723,23 +563,9 @@
       padding: 100px 10%;
     }
 
-    .missao-image {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      aspect-ratio: 4/5;
-    }
-
-    .missao-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s ease;
-    }
-
-    .missao-image:hover img {
-      transform: scale(1.04);
-    }
+    .missao-image { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/5; }
+    .missao-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .missao-image:hover img { transform: scale(1.04); }
 
     .missao-image::before {
       content: "";
@@ -766,24 +592,9 @@
       line-height: 1.4;
     }
 
-    .missao-tag strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    .missao-text .section-title {
-      max-width: 100%;
-      margin-bottom: 24px;
-    }
-
-    .missao-text p {
-      color: var(--warm-grey);
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
+    .missao-tag strong { display: block; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; }
+    .missao-text .section-title { max-width: 100%; margin-bottom: 24px; }
+    .missao-text p { color: var(--warm-grey); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
 
     .cidade-badge {
       display: inline-flex;
@@ -801,13 +612,7 @@
       margin-bottom: 20px;
     }
 
-    .feature-list {
-      list-style: none;
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .feature-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
 
     .feature-list li {
       display: flex;
@@ -834,18 +639,9 @@
       margin-top: 1px;
     }
 
-    /* SERVICOS */
-    .servicos-section {
-      background: white;
-      padding: 100px 5%;
-    }
+    .servicos-section { background: white; padding: 100px 5%; }
 
-    .servicos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
+    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
 
     .servico-card {
       border: 1px solid rgba(106, 158, 110, .18);
@@ -867,15 +663,8 @@
       transition: opacity .3s;
     }
 
-    .servico-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 44px rgba(26, 74, 30, .12);
-      border-color: rgba(106, 158, 110, .4);
-    }
-
-    .servico-card:hover::before {
-      opacity: 1;
-    }
+    .servico-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(26, 74, 30, .12); border-color: rgba(106, 158, 110, .4); }
+    .servico-card:hover::before { opacity: 1; }
 
     .servico-icon {
       width: 52px;
@@ -890,23 +679,9 @@
       transition: transform .3s, background .3s;
     }
 
-    .servico-card:hover .servico-icon {
-      transform: scale(1.1) rotate(-4deg);
-    }
-
-    .servico-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--forest);
-      margin-bottom: 10px;
-    }
-
-    .servico-card p {
-      font-size: 14px;
-      color: var(--warm-grey);
-      line-height: 1.65;
-    }
+    .servico-card:hover .servico-icon { transform: scale(1.1) rotate(-4deg); }
+    .servico-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
+    .servico-card p { font-size: 14px; color: var(--warm-grey); line-height: 1.65; }
 
     .servico-link {
       display: inline-flex;
@@ -921,11 +696,8 @@
       transition: gap .2s;
     }
 
-    .servico-card:hover .servico-link {
-      gap: 10px;
-    }
+    .servico-card:hover .servico-link { gap: 10px; }
 
-    /* COUNTERS */
     .counter-section {
       background: var(--forest);
       padding: 80px 5%;
@@ -946,15 +718,8 @@
       pointer-events: none;
     }
 
-    .counter-item {
-      text-align: center;
-      padding: 0 20px;
-      border-right: 1px solid rgba(255, 255, 255, .1);
-    }
-
-    .counter-item:last-child {
-      border-right: none;
-    }
+    .counter-item { text-align: center; padding: 0 20px; border-right: 1px solid rgba(255, 255, 255, .1); }
+    .counter-item:last-child { border-right: none; }
 
     .counter-number {
       font-family: 'Playfair Display', serif;
@@ -966,20 +731,9 @@
       margin-bottom: 8px;
     }
 
-    .counter-number .counter-suffix {
-      color: var(--gold);
-    }
+    .counter-number .counter-suffix { color: var(--gold); }
+    .counter-label { font-size: 12px; font-weight: 500; color: var(--mint); opacity: .7; letter-spacing: .12em; text-transform: uppercase; }
 
-    .counter-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--mint);
-      opacity: .7;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    /* CTA */
     .cta-banner {
       background: var(--forest);
       position: relative;
@@ -1002,20 +756,9 @@
       pointer-events: none;
     }
 
-    .cta-banner .section-label {
-      color: var(--mint);
-      opacity: .7;
-    }
-
-    .cta-banner .section-title {
-      color: white;
-      max-width: 540px;
-      margin-bottom: 0;
-    }
-
-    .cta-banner .section-title em {
-      color: var(--mint);
-    }
+    .cta-banner .section-label { color: var(--mint); opacity: .7; }
+    .cta-banner .section-title { color: white; max-width: 540px; margin-bottom: 0; }
+    .cta-banner .section-title em { color: var(--mint); }
 
     .cta-actions {
       display: flex;
@@ -1043,32 +786,11 @@
       transition: transform .2s, box-shadow .2s, background .2s;
     }
 
-    .btn-whats:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 44px rgba(37, 211, 102, .5);
-      background: #20b857;
-    }
+    .btn-whats:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(37, 211, 102, .5); background: #20b857; }
+    .btn-produtos { text-decoration: none; color: var(--mint); font-size: 13px; font-weight: 600; letter-spacing: .05em; opacity: .8; transition: opacity .2s; }
+    .btn-produtos:hover { opacity: 1; }
 
-    .btn-produtos {
-      text-decoration: none;
-      color: var(--mint);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .05em;
-      opacity: .8;
-      transition: opacity .2s;
-    }
-
-    .btn-produtos:hover {
-      opacity: 1;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #0e1a0f;
-      color: rgba(255, 255, 255, .5);
-      padding: 50px 5% 30px;
-    }
+    footer { background: #0e1a0f; color: rgba(255, 255, 255, .5); padding: 50px 5% 30px; }
 
     .footer-top {
       display: grid;
@@ -1079,20 +801,8 @@
       margin-bottom: 28px;
     }
 
-    .footer-brand .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, .85);
-      margin-bottom: 14px;
-    }
-
-    .footer-brand p {
-      font-size: 13px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, .4);
-      max-width: 260px;
-    }
+    .footer-brand .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: rgba(255, 255, 255, .85); margin-bottom: 14px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255, 255, 255, .4); max-width: 260px; }
 
     .footer-brand .footer-city {
       display: inline-flex;
@@ -1107,45 +817,15 @@
       opacity: .8;
     }
 
-    .footer-col h4 {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .5);
-      margin-bottom: 18px;
-    }
+    .footer-col h4 { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255, 255, 255, .5); margin-bottom: 18px; }
+    .footer-col a { display: block; text-decoration: none; color: rgba(255, 255, 255, .35); font-size: 13px; font-weight: 500; margin-bottom: 10px; transition: color .2s; }
+    .footer-col a:hover { color: var(--mint); }
 
-    .footer-col a {
-      display: block;
-      text-decoration: none;
-      color: rgba(255, 255, 255, .35);
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 10px;
-      transition: color .2s;
-    }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; }
 
-    .footer-col a:hover {
-      color: var(--mint);
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-copy {
-      font-size: 12px;
-    }
-
-    /* DROPDOWN */
-    .dropdown {
-      position: relative;
-    }
+    /* DROPDOWN — desktop */
+    .dropdown { position: relative; }
 
     .dropdown-menu {
       position: absolute;
@@ -1161,193 +841,60 @@
       border: 1px solid rgba(106, 158, 110, .12);
     }
 
-    .dropdown:hover .dropdown-menu {
-      display: block;
-      animation: dropIn .2s ease;
-    }
+    .dropdown:hover .dropdown-menu { display: block; animation: dropIn .2s ease; }
 
     @keyframes dropIn {
-      from {
-        opacity: 0;
-        transform: translateY(-6px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 14px !important;
-      border-radius: 8px;
-      transition: background .15s;
-      font-size: 14px;
-    }
+    .dropdown-menu a { display: block; padding: 10px 14px !important; border-radius: 8px; transition: background .15s; font-size: 14px; }
+    .dropdown-menu a:hover { background: var(--mint); color: var(--forest) !important; }
+    .dropdown-menu a::after { display: none !important; }
 
-    .dropdown-menu a:hover {
-      background: var(--mint);
-      color: var(--forest) !important;
-    }
-
-    .dropdown-menu a::after {
-      display: none !important;
-    }
-
-    /* ANIMATIONS */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* MOBILE */
     @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 130px;
-      }
-
-      .hero-left {
-        padding: 60px 6% 50px;
-      }
-
-      .hero-right {
-        height: 340px;
-        order: -1;
-      }
-
-      .hero-right::after {
-        background: linear-gradient(to top, var(--cream) 0%, transparent 30%);
-      }
-
-      .hero-stats {
-        gap: 24px;
-      }
-
-      .cores-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .missao-section {
-        grid-template-columns: 1fr;
-        padding: 80px 6%;
-      }
-
-      .missao-image {
-        aspect-ratio: 16/9;
-      }
-
-      .cta-banner {
-        grid-template-columns: 1fr;
-        padding: 70px 6%;
-      }
-
-      .cta-actions {
-        align-items: flex-start;
-      }
-
-      .servicos-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .counter-section {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .counter-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, .1);
-        padding: 20px;
-      }
-
-      .sobre-strip {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .strip-divider {
-        display: none;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 130px; }
+      .hero-left { padding: 60px 6% 50px; }
+      .hero-right { height: 340px; order: -1; }
+      .hero-right::after { background: linear-gradient(to top, var(--cream) 0%, transparent 30%); }
+      .hero-stats { gap: 24px; }
+      .cores-grid { grid-template-columns: 1fr 1fr; }
+      .missao-section { grid-template-columns: 1fr; padding: 80px 6%; }
+      .missao-image { aspect-ratio: 16/9; }
+      .cta-banner { grid-template-columns: 1fr; padding: 70px 6%; }
+      .cta-actions { align-items: flex-start; }
+      .servicos-grid { grid-template-columns: 1fr 1fr; }
+      .counter-section { grid-template-columns: 1fr 1fr; }
+      .counter-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, .1); padding: 20px; }
+      .sobre-strip { grid-template-columns: 1fr; gap: 16px; }
+      .strip-divider { display: none; }
+      .footer-top { grid-template-columns: 1fr; gap: 30px; }
     }
 
     @media (max-width: 600px) {
-      nav.menu {
-        display: none;
-      }
-
-      nav.menu.show {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 76px;
-        left: 0;
-        right: 0;
-        background: rgba(245, 240, 232, .97);
-        backdrop-filter: blur(14px);
-        padding: 24px 6%;
-        gap: 16px;
-        border-bottom: 1px solid rgba(106, 158, 110, .2);
-      }
-
-      nav.menu.show .nav-cta {
-        width: fit-content;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .cores-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-stats {
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .servicos-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .counter-section {
-        grid-template-columns: 1fr 1fr;
-      }
+      .cores-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .counter-section { grid-template-columns: 1fr 1fr; }
     }
 
     /* ============================================================
-       MOBILE MENU FIX — applied to all pages
+       MOBILE MENU — full screen overlay
        ============================================================ */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex !important;
-      }
+      .hamburger { display: flex !important; }
 
-      /* Hide desktop nav; show when toggled */
       nav#menu,
       nav.menu {
         display: none !important;
@@ -1365,19 +912,16 @@
         gap: 0 !important;
         z-index: 9000 !important;
         overflow-y: auto !important;
-        box-shadow: none !important;
         align-items: flex-start !important;
         justify-content: flex-start !important;
       }
 
       nav#menu.show,
-      nav.menu.show {
-        display: flex !important;
-      }
+      nav.menu.show { display: flex !important; }
 
-      /* Nav links */
-      nav#menu>a,
-      nav.menu>a {
+      /* Direct nav links */
+      nav#menu > a,
+      nav.menu > a {
         font-size: 18px !important;
         font-weight: 600 !important;
         padding: 16px 0 !important;
@@ -1389,13 +933,13 @@
         text-decoration: none !important;
       }
 
-      nav#menu>a:last-child,
-      nav.menu>a:last-child {
+      nav#menu > a:last-child,
+      nav.menu > a:last-child {
         border-bottom: none !important;
         margin-top: 12px !important;
       }
 
-      /* CTA button inside mobile menu */
+      /* CTA inside mobile menu */
       nav#menu .nav-cta,
       nav.menu .nav-cta {
         background: #1a4a1e !important;
@@ -1411,16 +955,23 @@
         box-sizing: border-box !important;
       }
 
-      /* Dropdown wrapper inside mobile menu */
+      /* Dropdown wrapper */
       nav#menu .dropdown,
       nav.menu .dropdown {
         width: 100% !important;
         border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+        /* IMPORTANT: disable hover-based dropdown on mobile */
+      }
+
+      /* Override desktop hover rule on mobile */
+      nav#menu .dropdown:hover .dropdown-menu,
+      nav.menu .dropdown:hover .dropdown-menu {
+        display: none !important;
       }
 
       /* Dropdown trigger link */
-      nav#menu .dropdown>a,
-      nav.menu .dropdown>a {
+      nav#menu .dropdown > a,
+      nav.menu .dropdown > a {
         font-size: 18px !important;
         font-weight: 600 !important;
         padding: 16px 0 !important;
@@ -1448,15 +999,10 @@
         min-width: auto !important;
         width: 100% !important;
         background: transparent !important;
-        left: auto !important;
-        top: auto !important;
+        animation: none !important;
       }
 
-      nav#menu .dropdown-menu::before,
-      nav.menu .dropdown-menu::before {
-        display: none !important;
-      }
-
+      /* Show sub-menu when parent has .open */
       nav#menu .dropdown.open .dropdown-menu,
       nav.menu .dropdown.open .dropdown-menu {
         display: block !important;
@@ -1475,6 +1021,7 @@
         text-decoration: none !important;
         width: 100% !important;
         white-space: normal !important;
+        border-radius: 0 !important;
       }
 
       nav#menu .dropdown-menu a:last-child,
@@ -1489,10 +1036,8 @@
       }
     }
 
-    /* Close button inside mobile menu */
-    .menu-close-btn {
-      display: none;
-    }
+    /* Close button */
+    .menu-close-btn { display: none; }
 
     @media (max-width: 768px) {
       .menu-close-btn {
@@ -1535,14 +1080,21 @@
       <div class="logo-text"></div>
     </a>
 
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
 
     <nav class="menu" id="menu">
       <a href="index.html">Início</a>
-      <div class="dropdown">
-        <a href="#">Produtos ▾</a>
+
+      <!-- ✅ FIX: id="dropdownProdutos" + onclick correto -->
+      <div class="dropdown" id="dropdownProdutos">
+        <a href="#" onclick="toggleDropdownProdutos(event)">
+          Produtos
+          <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .25s; flex-shrink:0;">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </a>
         <div class="dropdown-menu">
           <a href="areia-colorida.html">Areia Colorida</a>
           <a href="areia-classificada.html">Areia Classificada</a>
@@ -1550,8 +1102,15 @@
           <a href="seixos-rolados.html">Seixos Rolados</a>
         </div>
       </div>
+
+      <!-- Areia pra Serviços já tinha id correto -->
       <div class="dropdown" id="dropdownServicos">
-        <a href="#" onclick="toggleDropdownServicos(event)">Areia pra Serviços ▾</a>
+        <a href="#" onclick="toggleDropdownServicos(event)">
+          Areia pra Serviços
+          <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .25s; flex-shrink:0;">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </a>
         <div class="dropdown-menu">
           <a href="servico-filtro-piscina.html">Filtro de Piscina</a>
           <a href="servico-grama-sintetica.html">Grama Sintética</a>
@@ -1561,6 +1120,7 @@
           <a href="servico-paisagismo.html">Paisagismo &amp; Decoração</a>
         </div>
       </div>
+
       <a href="contato.html">Contato</a>
       <a href="https://wa.me/5511973220218" class="nav-cta">Solicitar Orçamento</a>
     </nav>
@@ -1572,10 +1132,9 @@
       <div class="hero-eyebrow">Soluções Sustentáveis · Descalvado SP</div>
 
       <div class="hero-location">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-          <circle cx="12" cy="10" r="3" />
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
         </svg>
         Descalvado — SP
       </div>
@@ -1587,17 +1146,15 @@
 
       <p class="hero-desc">
         Empresa descalvadense especializada em areia colorida ecológica, areia classificada e areia p/ serviços
-        ambientais.
-        Responsabilidade do interior paulista para todo o região.
+        ambientais. Responsabilidade do interior paulista para todo o região.
       </p>
 
       <div class="hero-actions">
         <a href="produtos.html" class="btn-main">
           Ver Produtos
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
         <a href="contato.html" class="btn-ghost">Fale Conosco →</a>
@@ -1652,7 +1209,6 @@
     </div>
   </div>
 
-
   <!-- MISSÃO -->
   <section id="sobre" class="missao-section">
     <div class="missao-image reveal">
@@ -1662,10 +1218,9 @@
 
     <div class="missao-text reveal reveal-delay-2">
       <div class="cidade-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-          <circle cx="12" cy="10" r="3" />
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
         </svg>
         Descalvado · São Paulo
       </div>
@@ -1690,8 +1245,6 @@
       </ul>
     </div>
   </section>
-
-
 
   <!-- AREIA PRA SERVIÇOS -->
   <section class="servicos-section">
@@ -1749,18 +1302,15 @@
   <!-- COUNTERS -->
   <div class="counter-section">
     <div class="counter-item reveal">
-      <span class="counter-number"><span class="count" data-target="500">0</span><span
-          class="counter-suffix">+</span></span>
+      <span class="counter-number"><span class="count" data-target="500">0</span><span class="counter-suffix">+</span></span>
       <span class="counter-label">Projetos entregues</span>
     </div>
     <div class="counter-item reveal reveal-delay-1">
-      <span class="counter-number"><span class="count" data-target="20">0</span><span
-          class="counter-suffix">+</span></span>
+      <span class="counter-number"><span class="count" data-target="20">0</span><span class="counter-suffix">+</span></span>
       <span class="counter-label">Tonalidades disponíveis</span>
     </div>
     <div class="counter-item reveal reveal-delay-2">
-      <span class="counter-number"><span class="count" data-target="8">0</span><span
-          class="counter-suffix">+</span></span>
+      <span class="counter-number"><span class="count" data-target="8">0</span><span class="counter-suffix">+</span></span>
       <span class="counter-label">Anos de experiência</span>
     </div>
     <div class="counter-item reveal reveal-delay-3">
@@ -1778,8 +1328,7 @@
     <div class="cta-actions reveal reveal-delay-2">
       <a href="https://wa.me/5511973220218" class="btn-whats">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
         Pedir pelo WhatsApp
       </a>
@@ -1792,13 +1341,11 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">D'Areia Ambiental</div>
-        <p>Empresa descalvadense especializada em soluções ambientais sustentáveis: areia colorida, areia classificada e
-          areia p/ serviços para construção, escola e paisagismo.</p>
+        <p>Empresa descalvadense especializada em soluções ambientais sustentáveis: areia colorida, areia classificada e areia p/ serviços para construção, escola e paisagismo.</p>
         <div class="footer-city">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
           </svg>
           Descalvado · São Paulo
         </div>
@@ -1823,35 +1370,22 @@
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 D'Areia Ambiental — Descalvado, SP · Todos os direitos reservados</p>
       <nav style="display:flex; gap:20px;">
-        <a href="index.html"
-          style="color:rgba(255,255,255,.35); font-size:13px; text-decoration:none; transition:color .2s;">Início</a>
-        <a href="contato.html"
-          style="color:rgba(255,255,255,.35); font-size:13px; text-decoration:none; transition:color .2s;">Contato</a>
+        <a href="index.html" style="color:rgba(255,255,255,.35); font-size:13px; text-decoration:none; transition:color .2s;">Início</a>
+        <a href="contato.html" style="color:rgba(255,255,255,.35); font-size:13px; text-decoration:none; transition:color .2s;">Contato</a>
       </nav>
     </div>
   </footer>
 
   <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
         e.preventDefault(); return false;
       }
     });
 
-    function toggleMenu() { document.getElementById('menu').classList.toggle('show'); }
-    function toggleDropdownServicos(e) { e.preventDefault(); document.getElementById('dropdownServicos')?.classList.toggle('open'); }
-
-    document.addEventListener('click', function (e) {
-      const menu = document.getElementById('menu');
-      const hamburger = document.querySelector('.hamburger');
-      const ds = document.getElementById('dropdownServicos');
-      if (ds && !ds.contains(e.target)) ds.classList.remove('open');
-      if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) menu.classList.remove('show');
-    });
-
-    // Progress bar + header shadow on scroll
-    window.addEventListener('scroll', function () {
+    // Progress bar + header shadow
+    window.addEventListener('scroll', function() {
       const header = document.getElementById('header');
       const progressBar = document.getElementById('progress-bar');
       const scrollTop = window.scrollY;
@@ -1890,13 +1424,12 @@
   </script>
 
   <script>
-
-    // ── Mobile Menu (global fix) ──────────────────────────────
-    (function () {
+    // ── Mobile Menu ───────────────────────────────────────────
+    (function() {
       function getMenu() { return document.getElementById('menu'); }
       function getHamburger() { return document.getElementById('hamburger'); }
 
-      window.toggleMenu = function () {
+      window.toggleMenu = function() {
         var menu = getMenu();
         var btn = getHamburger();
         if (!menu) return;
@@ -1905,7 +1438,7 @@
         document.body.style.overflow = isOpen ? 'hidden' : '';
       };
 
-      window.closeMenu = function () {
+      window.closeMenu = function() {
         var menu = getMenu();
         var btn = getHamburger();
         if (menu) menu.classList.remove('show');
@@ -1913,32 +1446,28 @@
         document.body.style.overflow = '';
       };
 
-      // Generic dropdown toggle — works for any dropdown id passed
-      window.toggleDropdownById = function (e, id) {
+      // Generic dropdown toggle
+      window.toggleDropdownById = function(e, id) {
         e.preventDefault();
         e.stopPropagation();
         var el = document.getElementById(id);
         if (!el) return;
-        // Close all other dropdowns first
-        document.querySelectorAll('.dropdown.open').forEach(function (d) {
+        // Close all other dropdowns
+        document.querySelectorAll('.dropdown.open').forEach(function(d) {
           if (d !== el) d.classList.remove('open');
         });
         el.classList.toggle('open');
       };
 
-      // Legacy named functions (keep backward compat)
-      window.toggleDropdown = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
-      window.toggleDropdownServicos = function (e) { window.toggleDropdownById(e, 'dropdownServicos'); };
-      window.toggleDropdownProdutos = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
-      window.toggleDropdownProdutosFooter = function (e) { window.toggleDropdownById(e, 'dropdownProdutosFooter'); };
-      window.toggleDropdownServicosFooter = function (e) { window.toggleDropdownById(e, 'dropdownServicosFooter'); };
+      // Named aliases
+      window.toggleDropdownProdutos  = function(e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
+      window.toggleDropdownServicos  = function(e) { window.toggleDropdownById(e, 'dropdownServicos'); };
 
-      // Close menu when a non-dropdown nav link is clicked
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', function() {
         var menu = getMenu();
         if (!menu) return;
 
-        // Add close button to nav if not already present
+        // Add close button if not present
         if (!menu.querySelector('.menu-close-btn')) {
           var closeBtn = document.createElement('button');
           closeBtn.className = 'menu-close-btn';
@@ -1948,42 +1477,37 @@
           menu.insertBefore(closeBtn, menu.firstChild);
         }
 
-        // Direct links (not inside dropdowns) close the menu on click
-        menu.querySelectorAll(':scope > a').forEach(function (a) {
-          a.addEventListener('click', function () {
+        // Direct links close menu
+        menu.querySelectorAll(':scope > a').forEach(function(a) {
+          a.addEventListener('click', function() {
             if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
             window.closeMenu();
           });
         });
 
-        // Dropdown sub-links close the whole menu
-        menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
-          a.addEventListener('click', function () {
-            window.closeMenu();
-          });
+        // Sub-links close menu
+        menu.querySelectorAll('.dropdown-menu a').forEach(function(a) {
+          a.addEventListener('click', function() { window.closeMenu(); });
         });
       });
 
       // Click outside closes everything
-      document.addEventListener('click', function (e) {
+      document.addEventListener('click', function(e) {
         var menu = getMenu();
         var btn = getHamburger();
         if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
           window.closeMenu();
         }
-        // Close open dropdowns when clicking outside them
-        document.querySelectorAll('.dropdown.open').forEach(function (d) {
+        document.querySelectorAll('.dropdown.open').forEach(function(d) {
           if (!d.contains(e.target)) d.classList.remove('open');
         });
       });
 
-      // Escape key closes menu
-      document.addEventListener('keydown', function (e) {
+      // Escape closes menu
+      document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') window.closeMenu();
       });
     })();
-
   </script>
 </body>
-
 </html>
