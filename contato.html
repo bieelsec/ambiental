@@ -1,0 +1,1408 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | D'Areia Ambiental</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde: #1a4f1c;
+            --verde-mid: #2e7d32;
+            --verde-soft: #4a9e4e;
+            --verde-pale: #e8f5e9;
+            --creme: #f9f6f0;
+            --creme-dark: #ede8df;
+            --areia: #c9b99a;
+            --areia-light: #f0e8d8;
+            --texto: #1a1a18;
+            --muted: #6b6b60;
+            --branco: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .6;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(249, 246, 240, .94);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--creme-dark);
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--verde-pale);
+            border: 2px solid var(--verde-pale);
+            object-fit: cover;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px;
+            background: none;
+            border: none;
+            z-index: 200;
+        }
+
+        .hamburger:hover {
+            background: var(--verde-pale);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2.5px;
+            background: var(--verde);
+            border-radius: 3px;
+            transition: transform .3s, opacity .3s;
+            transform-origin: center;
+        }
+
+        .hamburger.ativo span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.ativo span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.ativo span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: .3px;
+            transition: color .2s;
+        }
+
+        nav a:hover {
+            color: var(--verde);
+        }
+
+        nav a.ativo {
+            color: var(--verde);
+            font-weight: 700;
+        }
+
+        .nav-cta {
+            background: var(--verde) !important;
+            color: var(--branco) !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 13px !important;
+            transition: background .2s, transform .15s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--verde-mid) !important;
+            transform: translateY(-1px);
+        }
+
+        /* DROPDOWN */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown>a {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: var(--branco);
+            border: 1px solid var(--creme-dark);
+            border-radius: 16px;
+            padding: 10px 0;
+            min-width: 220px;
+            box-shadow: 0 12px 40px rgba(26, 79, 28, .12);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s, visibility .25s, transform .25s;
+            z-index: 200;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 8px;
+            background: var(--branco);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            font-size: 13px !important;
+            font-weight: 500;
+            color: var(--muted) !important;
+            transition: background .15s, color .15s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--verde-pale);
+            color: var(--verde) !important;
+        }
+
+        .dropdown-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--areia);
+            flex-shrink: 0;
+            transition: background .15s;
+        }
+
+        .dropdown-menu a:hover .dropdown-dot {
+            background: var(--verde-mid);
+        }
+
+        .dropdown-chevron {
+            font-size: 10px;
+            margin-left: 2px;
+            transition: transform .25s;
+        }
+
+        .dropdown:hover .dropdown-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* HERO SPLIT */
+        .hero-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 127px);
+        }
+
+        .hero-left {
+            background: var(--verde);
+            padding: 80px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .08);
+            top: -160px;
+            right: -180px;
+            pointer-events: none;
+        }
+
+        .hero-left::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .06);
+            bottom: -100px;
+            left: -80px;
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: rgba(255, 255, 255, .85);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 50px;
+            width: fit-content;
+            margin-bottom: 36px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--areia);
+            flex-shrink: 0;
+        }
+
+        .hero-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(44px, 4.5vw, 68px);
+            font-weight: 900;
+            line-height: 1.0;
+            color: var(--branco);
+            margin-bottom: 28px;
+            letter-spacing: -1px;
+        }
+
+        .hero-left h1 em {
+            font-style: italic;
+            color: var(--areia);
+        }
+
+        .hero-left>p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, .7);
+            line-height: 1.8;
+            max-width: 400px;
+            font-weight: 300;
+            margin-bottom: 56px;
+        }
+
+        .info-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .info-block {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn .6s ease forwards;
+        }
+
+        .info-block:nth-child(1) {
+            animation-delay: .2s;
+        }
+
+        .info-block:nth-child(2) {
+            animation-delay: .35s;
+        }
+
+        .info-block:nth-child(3) {
+            animation-delay: .5s;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--areia);
+        }
+
+        .info-value {
+            font-size: 15px;
+            color: var(--branco);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .info-sub {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .5);
+            margin-top: 2px;
+        }
+
+        .info-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, .1);
+            margin: 4px 0;
+        }
+
+        /* FORM PANEL */
+        .hero-right {
+            background: var(--creme);
+            padding: 80px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            margin-bottom: 36px;
+        }
+
+        .form-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--areia);
+            margin-bottom: 12px;
+        }
+
+        .form-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 2.5vw, 38px);
+            font-weight: 900;
+            color: var(--verde);
+            line-height: 1.1;
+            letter-spacing: -.5px;
+        }
+
+        .form-header p {
+            margin-top: 12px;
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 13px 16px;
+            background: var(--branco);
+            border: 1.5px solid var(--creme-dark);
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: var(--texto);
+            outline: none;
+            transition: border-color .25s, box-shadow .25s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--verde-mid);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, .1);
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #b0b0a0;
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.6;
+        }
+
+        .field select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b60' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .form-submit {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--verde);
+            color: var(--branco);
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all .25s;
+            letter-spacing: .2px;
+            box-shadow: 0 8px 28px rgba(26, 79, 28, .25);
+        }
+
+        .btn-submit:hover {
+            background: var(--verde-mid);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(26, 79, 28, .32);
+        }
+
+        .btn-submit svg {
+            transition: transform .25s;
+        }
+
+        .btn-submit:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-wpp-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1.5px solid var(--creme-dark);
+            transition: color .2s, border-color .2s;
+        }
+
+        .btn-wpp-inline:hover {
+            color: var(--verde);
+            border-color: var(--verde-pale);
+        }
+
+        .form-success {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 16px;
+            padding: 40px;
+            animation: fadeUp .5s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--verde-pale);
+            border: 2px solid #b7d9b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .form-success h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--verde);
+            font-weight: 700;
+        }
+
+        .form-success p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        /* STRIP */
+        .strip {
+            background: var(--verde);
+            padding: 24px 0;
+        }
+
+        .strip-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, .75);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .strip-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--areia);
+            flex-shrink: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--verde);
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding: 0;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 56px 0 40px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, .55);
+            font-size: 13px;
+            line-height: 1.7;
+            max-width: 260px;
+            margin-top: 10px;
+        }
+
+        .footer-brand strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--branco);
+            font-weight: 700;
+            display: block;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, .65);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color .2s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding: 22px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, .4);
+            font-size: 12px;
+        }
+
+        .footer-eco {
+            color: rgba(255, 255, 255, .4);
+            font-size: 12px;
+        }
+
+        .footer-nav .dropdown-menu {
+            background: #2a5e2d;
+            border-color: rgba(255, 255, 255, .12);
+        }
+
+        .footer-nav .dropdown-menu a {
+            color: rgba(255, 255, 255, .75) !important;
+        }
+
+        .footer-nav .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, .1);
+            color: white !important;
+        }
+
+        .footer-nav .dropdown-menu::before {
+            background: #2a5e2d;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 960px) {
+            .hero-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 60px 32px;
+            }
+
+            .hero-right {
+                padding: 60px 32px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--creme);
+                border-bottom: 1px solid var(--creme-dark);
+                padding: 20px;
+                z-index: 300;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 12px 0;
+                width: 100%;
+                border-bottom: 1px solid var(--creme-dark);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0 0 0 16px;
+                display: none;
+            }
+
+            .dropdown-menu::before {
+                display: none;
+            }
+
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                padding: 8px 8px !important;
+                font-size: 14px !important;
+                border-bottom: 1px solid var(--creme-dark) !important;
+            }
+
+            .strip-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .hero-left,
+            .hero-right {
+                padding: 48px 24px;
+            }
+        }
+
+        /* ============================================================
+       MOBILE MENU FIX — applied to all pages
+       ============================================================ */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex !important;
+            }
+
+            /* Hide desktop nav; show when toggled */
+            nav#menu,
+            nav.menu {
+                display: none !important;
+                flex-direction: column !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: rgba(249, 246, 240, 0.99) !important;
+                backdrop-filter: blur(20px) !important;
+                padding: 90px 28px 40px !important;
+                gap: 0 !important;
+                z-index: 9000 !important;
+                overflow-y: auto !important;
+                box-shadow: none !important;
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+            }
+
+            nav#menu.show,
+            nav.menu.show {
+                display: flex !important;
+            }
+
+            /* Nav links */
+            nav#menu>a,
+            nav.menu>a {
+                font-size: 18px !important;
+                font-weight: 600 !important;
+                padding: 16px 0 !important;
+                border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+                color: #1a4a1e !important;
+                width: 100% !important;
+                display: block !important;
+                letter-spacing: 0 !important;
+                text-decoration: none !important;
+            }
+
+            nav#menu>a:last-child,
+            nav.menu>a:last-child {
+                border-bottom: none !important;
+                margin-top: 12px !important;
+            }
+
+            /* CTA button inside mobile menu */
+            nav#menu .nav-cta,
+            nav.menu .nav-cta {
+                background: #1a4a1e !important;
+                color: #fff !important;
+                border-radius: 50px !important;
+                padding: 16px 28px !important;
+                text-align: center !important;
+                width: 100% !important;
+                font-size: 15px !important;
+                font-weight: 700 !important;
+                margin-top: 8px !important;
+                display: block !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Dropdown wrapper inside mobile menu */
+            nav#menu .dropdown,
+            nav.menu .dropdown {
+                width: 100% !important;
+                border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+            }
+
+            /* Dropdown trigger link */
+            nav#menu .dropdown>a,
+            nav.menu .dropdown>a {
+                font-size: 18px !important;
+                font-weight: 600 !important;
+                padding: 16px 0 !important;
+                color: #1a4a1e !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                border-bottom: none !important;
+                text-decoration: none !important;
+            }
+
+            /* Dropdown sub-menu: static inside mobile nav */
+            nav#menu .dropdown-menu,
+            nav.menu .dropdown-menu {
+                position: static !important;
+                display: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 0 0 8px 16px !important;
+                min-width: auto !important;
+                width: 100% !important;
+                background: transparent !important;
+                left: auto !important;
+                top: auto !important;
+            }
+
+            nav#menu .dropdown-menu::before,
+            nav.menu .dropdown-menu::before {
+                display: none !important;
+            }
+
+            nav#menu .dropdown.open .dropdown-menu,
+            nav.menu .dropdown.open .dropdown-menu {
+                display: block !important;
+            }
+
+            nav#menu .dropdown-menu a,
+            nav.menu .dropdown-menu a {
+                font-size: 15px !important;
+                font-weight: 500 !important;
+                padding: 12px 8px !important;
+                color: #2e7d32 !important;
+                border-bottom: 1px solid rgba(106, 158, 110, .12) !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                text-decoration: none !important;
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            nav#menu .dropdown-menu a:last-child,
+            nav.menu .dropdown-menu a:last-child {
+                border-bottom: none !important;
+            }
+
+            /* Chevron rotation on open */
+            nav#menu .dropdown.open .dropdown-chevron,
+            nav.menu .dropdown.open .dropdown-chevron {
+                transform: rotate(180deg) !important;
+            }
+        }
+
+        /* Close button inside mobile menu */
+        .menu-close-btn {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-close-btn {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: rgba(26, 74, 30, .08);
+                border: none;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                color: #1a4a1e;
+                z-index: 9001;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="33.png" alt="D'Areia Ambiental" class="logo-img">
+                </a>
+                <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav id="menu">
+                    <a href="index.html">Início</a>
+                    <div class="dropdown" id="dropdownProdutos">
+                        <a href="#" onclick="toggleDropdownProdutos(event)">Produtos <span
+                                class="dropdown-chevron">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
+                            <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
+                            <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
+                            <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
+                        </div>
+                    </div>
+                    <div class="dropdown" id="dropdownServicos">
+                        <a href="#" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span
+                                class="dropdown-chevron">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de
+                                Piscina</a>
+                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama
+                                Sintética</a>
+                            <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
+                            <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
+                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro
+                                Jateamento</a>
+                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp;
+                                Decoração</a>
+                        </div>
+                    </div>
+                    <a href="contato.html" class="ativo">Contato</a>
+                    <a href="https://wa.me/5511973220218" class="nav-cta">Solicitar Orçamento</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SPLIT -->
+    <section class="hero-contact">
+
+        <!-- ESQUERDA — INFO -->
+        <div class="hero-left">
+            <div class="hero-eyebrow">Fale Conosco</div>
+            <h1>Vamos<br>trabalhar<br><em>juntos</em></h1>
+            <p>Estamos prontos para atender orçamentos, tirar dúvidas e orientar cada projeto com atenção e agilidade.
+            </p>
+
+            <div class="info-blocks">
+                <div class="info-block">
+                    <div class="info-icon">📱</div>
+                    <div class="info-text">
+                        <span class="info-label">WhatsApp</span>
+                        <span class="info-value">(11) 97322-0218</span>
+                        <span class="info-sub">Seg – Sex, 08h às 18h</span>
+                    </div>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-block">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-text">
+                        <span class="info-label">E-mail</span>
+                        <span class="info-value">areiasdescal@hotmail.com</span>
+                        <span class="info-sub">Resposta em até 24h úteis</span>
+                    </div>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-block">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <span class="info-label">Localização</span>
+                        <span class="info-value">Descalvado — SP, Brasil</span>
+                        <span class="info-sub">Entregas em toda a Região</span>
+
+                        <a href="https://maps.google.com/?q=Descalvado+SP" target="_blank" class="btn-maps">
+                            📍 Ver no Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIREITA — FORMULÁRIO -->
+        <div class="hero-right">
+            <div id="formWrap">
+                <div class="form-header">
+                    <p class="form-eyebrow">Enviar Mensagem</p>
+                    <h2>Como podemos<br>te ajudar?</h2>
+                    <p>Preencha o formulário e retornaremos o mais breve possível.</p>
+                </div>
+
+                <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="field">
+                            <label for="empresa">Empresa (opcional)</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+                        </div>
+                        <div class="field">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="field">
+                            <label for="telefone">Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="field form-full">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" name="assunto">
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option>Orçamento de produtos</option>
+                                <option>Orçamento de areia pra serviços</option>
+                                <option>Dúvidas sobre produtos</option>
+                                <option>Parceria comercial</option>
+                                <option>Logística / Entrega</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                        <div class="field form-full">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem"
+                                placeholder="Descreva sua necessidade, projeto ou dúvida..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit">
+                            Enviar mensagem
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </button>
+                        <a href="https://wa.me/5511973220218" target="_blank" class="btn-wpp-inline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            ou chamar no WhatsApp
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SUCCESS STATE -->
+            <div class="form-success" id="formSuccess">
+                <div class="success-icon">✅</div>
+                <h3>Mensagem enviada!</h3>
+                <p>Obrigado pelo contato. Nossa equipe retornará em breve pelo e-mail ou telefone informado.</p>
+                <a href="https://wa.me/5511973220218" target="_blank" class="btn-submit"
+                    style="margin-top:8px;text-decoration:none">
+                    Chamar no WhatsApp →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRIP -->
+    <div class="strip">
+        <div class="container">
+            <div class="strip-inner">
+                <div class="strip-item"><span class="strip-dot"></span> Atendimento Seg–Sex, 08h às 18h</div>
+                <div class="strip-item"><span class="strip-dot"></span> Resposta em até 24h úteis</div>
+                <div class="strip-item"><span class="strip-dot"></span> Entregas para todo o Brasil</div>
+                <div class="strip-item"><span class="strip-dot"></span> Orçamento sem compromisso</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <strong>D'Areia Ambiental</strong>
+                    <p>Soluções sustentáveis em areia e areia pra serviços para sua casa, empresa e projeto.</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Início</a>
+                    <div class="dropdown" id="dropdownProdutosFooter">
+                        <a href="#" onclick="toggleDropdownProdutosFooter(event)">Produtos ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
+                            <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
+                            <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
+                            <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
+                        </div>
+                    </div>
+                    <div class="dropdown" id="dropdownServicosFooter">
+                        <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia p/ Serviços ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de
+                                Piscina</a>
+                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama
+                                Sintética</a>
+                            <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
+                            <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
+                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro
+                                Jateamento</a>
+                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp;
+                                Decoração</a>
+                        </div>
+                    </div>
+                    <a href="contato.html">Contato</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 D'Areia Ambiental · Todos os direitos reservados</p>
+                <div class="footer-eco">🌿 Empresa comprometida com o meio ambiente</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('show');
+            document.getElementById('hamburger').classList.toggle('ativo');
+        }
+        function toggleDropdownProdutos(e) { e.preventDefault(); document.getElementById('dropdownProdutos')?.classList.toggle('open'); }
+        function toggleDropdownServicos(e) { e.preventDefault(); document.getElementById('dropdownServicos')?.classList.toggle('open'); }
+        function toggleDropdownProdutosFooter(e) { e.preventDefault(); document.getElementById('dropdownProdutosFooter')?.classList.toggle('open'); }
+        function toggleDropdownServicosFooter(e) { e.preventDefault(); document.getElementById('dropdownServicosFooter')?.classList.toggle('open'); }
+        document.addEventListener('click', (e) => {
+            ['dropdownProdutos', 'dropdownServicos', 'dropdownProdutosFooter', 'dropdownServicosFooter'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !el.contains(e.target)) el.classList.remove('open');
+            });
+            const menu = document.getElementById('menu');
+            const btn = document.getElementById('hamburger');
+            if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('show'); btn.classList.remove('ativo');
+            }
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            let valid = true;
+            [['nome', nome], ['email', email], ['mensagem', mensagem]].forEach(([id, val]) => {
+                const el = document.getElementById(id);
+                if (!val) {
+                    el.style.borderColor = '#c0392b';
+                    el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+                    valid = false;
+                }
+            });
+            if (!valid) return;
+            const btn = document.querySelector('.btn-submit');
+            btn.textContent = 'Enviando…'; btn.disabled = true;
+            setTimeout(() => {
+                document.getElementById('formWrap').style.display = 'none';
+                const s = document.getElementById('formSuccess');
+                s.style.display = 'flex';
+            }, 900);
+        }
+    </script>
+
+    <script>
+
+        // ── Mobile Menu (global fix) ──────────────────────────────
+        (function () {
+            function getMenu() { return document.getElementById('menu'); }
+            function getHamburger() { return document.getElementById('hamburger'); }
+
+            window.toggleMenu = function () {
+                var menu = getMenu();
+                var btn = getHamburger();
+                if (!menu) return;
+                var isOpen = menu.classList.toggle('show');
+                if (btn) btn.classList.toggle('ativo', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            window.closeMenu = function () {
+                var menu = getMenu();
+                var btn = getHamburger();
+                if (menu) menu.classList.remove('show');
+                if (btn) btn.classList.remove('ativo');
+                document.body.style.overflow = '';
+            };
+
+            // Generic dropdown toggle — works for any dropdown id passed
+            window.toggleDropdownById = function (e, id) {
+                e.preventDefault();
+                e.stopPropagation();
+                var el = document.getElementById(id);
+                if (!el) return;
+                // Close all other dropdowns first
+                document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                    if (d !== el) d.classList.remove('open');
+                });
+                el.classList.toggle('open');
+            };
+
+            // Legacy named functions (keep backward compat)
+            window.toggleDropdown = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
+            window.toggleDropdownServicos = function (e) { window.toggleDropdownById(e, 'dropdownServicos'); };
+            window.toggleDropdownProdutos = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
+            window.toggleDropdownProdutosFooter = function (e) { window.toggleDropdownById(e, 'dropdownProdutosFooter'); };
+            window.toggleDropdownServicosFooter = function (e) { window.toggleDropdownById(e, 'dropdownServicosFooter'); };
+
+            // Close menu when a non-dropdown nav link is clicked
+            document.addEventListener('DOMContentLoaded', function () {
+                var menu = getMenu();
+                if (!menu) return;
+
+                // Add close button to nav if not already present
+                if (!menu.querySelector('.menu-close-btn')) {
+                    var closeBtn = document.createElement('button');
+                    closeBtn.className = 'menu-close-btn';
+                    closeBtn.setAttribute('aria-label', 'Fechar menu');
+                    closeBtn.innerHTML = '&#x2715;';
+                    closeBtn.onclick = window.closeMenu;
+                    menu.insertBefore(closeBtn, menu.firstChild);
+                }
+
+                // Direct links (not inside dropdowns) close the menu on click
+                menu.querySelectorAll(':scope > a').forEach(function (a) {
+                    a.addEventListener('click', function () {
+                        if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
+                        window.closeMenu();
+                    });
+                });
+
+                // Dropdown sub-links close the whole menu
+                menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
+                    a.addEventListener('click', function () {
+                        window.closeMenu();
+                    });
+                });
+            });
+
+            // Click outside closes everything
+            document.addEventListener('click', function (e) {
+                var menu = getMenu();
+                var btn = getHamburger();
+                if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+                    window.closeMenu();
+                }
+                // Close open dropdowns when clicking outside them
+                document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                    if (!d.contains(e.target)) d.classList.remove('open');
+                });
+            });
+
+            // Escape key closes menu
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') window.closeMenu();
+            });
+        })();
+
+    </script>
+</body>
+
+</html>
+
