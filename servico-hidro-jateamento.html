@@ -1,0 +1,1347 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D'Areia Ambiental | Areia para Hidro Jateamento</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --verde: #1a4f1c;
+      --verde-mid: #2e7d32;
+      --verde-soft: #4a9e4e;
+      --verde-pale: #e8f5e9;
+      --creme: #f9f6f0;
+      --creme-dark: #ede8df;
+      --areia: #c9b99a;
+      --areia-light: #f0e8d8;
+      --texto: #1a1a18;
+      --texto-muted: #6b6b60;
+      --branco: #ffffff;
+      --sombra: 0 4px 40px rgba(26, 79, 28, .08);
+      --sombra-card: 0 2px 24px rgba(26, 79, 28, .10);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--creme);
+      background-image: url('areia.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--texto);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(249, 246, 240, 0.82);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header,
+    main,
+    footer,
+    section,
+    .hero,
+    .tira,
+    .detalhe-section,
+    .cta-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 246, 240, .92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--creme-dark);
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--verde-pale);
+      border: 2px solid var(--verde-pale);
+      object-fit: cover;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+
+    .hamburger:hover {
+      background: var(--verde-pale);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2.5px;
+      background: var(--verde);
+      border-radius: 3px;
+      transition: transform .3s, opacity .3s;
+      transform-origin: center;
+    }
+
+    .hamburger.ativo span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .hamburger.ativo span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.ativo span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texto-muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .3px;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--verde);
+    }
+
+    nav a.ativo {
+      color: var(--verde);
+      font-weight: 700;
+    }
+
+    .nav-cta {
+      background: var(--verde) !important;
+      color: var(--branco) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px !important;
+      transition: background .2s, transform .15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--verde-mid) !important;
+      transform: translateY(-1px);
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown>a {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--branco);
+      border: 1px solid var(--creme-dark);
+      border-radius: 16px;
+      padding: 10px 0;
+      min-width: 220px;
+      box-shadow: 0 12px 40px rgba(26, 79, 28, .12);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s, visibility .25s, transform .25s;
+      z-index: 200;
+    }
+
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 8px;
+      background: var(--branco);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown.open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      font-size: 13px !important;
+      font-weight: 500;
+      color: var(--texto-muted) !important;
+      transition: background .15s, color .15s;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--verde-pale);
+      color: var(--verde) !important;
+    }
+
+    .dropdown-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--areia);
+      flex-shrink: 0;
+      transition: background .15s;
+    }
+
+    .dropdown-menu a:hover .dropdown-dot {
+      background: var(--verde-mid);
+    }
+
+    .dropdown-chevron {
+      font-size: 10px;
+      margin-left: 2px;
+      transition: transform .25s;
+    }
+
+    .dropdown:hover .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .hero-content {
+      padding: 80px 0 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--verde-pale);
+      border: 1px solid #b7d9b8;
+      color: var(--verde-mid);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--verde-mid);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 5.5vw, 76px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--verde);
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--areia);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--texto-muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 44px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .22s;
+    }
+
+    .btn-hero-primary {
+      background: var(--verde);
+      color: var(--branco);
+      box-shadow: 0 8px 28px rgba(26, 79, 28, .28);
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--verde-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(26, 79, 28, .32);
+    }
+
+    .btn-hero-ghost {
+      color: var(--verde);
+      border: 1.5px solid #b7d9b8;
+      background: transparent;
+    }
+
+    .btn-hero-ghost:hover {
+      background: var(--verde-pale);
+    }
+
+    .hero-arrow {
+      font-size: 18px;
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, var(--creme) 0%, transparent 35%);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* TIRA */
+    .tira {
+      background: var(--verde);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+
+    .tira-inner {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tira-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, .85);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+
+    .tira-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--areia);
+      flex-shrink: 0;
+    }
+
+    /* DETALHE SECTION */
+    .detalhe-section {
+      padding: 100px 0 80px;
+    }
+
+    .detalhe-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .detalhe-imagem {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--sombra-card);
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+
+    .detalhe-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .detalhe-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--verde);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--areia);
+      margin-bottom: 12px;
+    }
+
+    .detalhe-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--verde);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .detalhe-texto {
+      font-size: 17px;
+      color: var(--texto-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .beneficios {
+      list-style: none;
+      margin: 24px 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .beneficios li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    .beneficios li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--verde-mid);
+      flex-shrink: 0;
+    }
+
+    .estoque-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--verde-pale);
+      color: var(--verde-mid);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .estoque-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--verde-mid);
+    }
+
+    .btn-solicitar-grande {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--verde);
+      color: var(--branco);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(26, 79, 28, .28);
+      transition: all .22s;
+    }
+
+    .btn-solicitar-grande:hover {
+      background: var(--verde-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(26, 79, 28, .32);
+    }
+
+    /* CTA */
+    .cta-section {
+      margin: 60px 0 80px;
+      background: var(--verde);
+      border-radius: 32px;
+      padding: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      color: var(--branco);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, .75);
+      font-size: 16px;
+      max-width: 400px;
+    }
+
+    .cta-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--areia);
+      margin-bottom: 10px;
+    }
+
+    .cta-acoes {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--branco);
+      color: var(--verde);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-wpp:hover {
+      background: var(--verde-pale);
+      transform: translateY(-1px);
+    }
+
+    .btn-voltar {
+      color: rgba(255, 255, 255, .8);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .btn-voltar:hover {
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--verde);
+      color: var(--branco);
+      padding: 0;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 0 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-nav a {
+      color: rgba(255, 255, 255, .7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s;
+    }
+
+    .footer-nav a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, .5);
+      font-size: 13px;
+    }
+
+    .footer-eco {
+      color: rgba(255, 255, 255, .5);
+      font-size: 13px;
+    }
+
+    /* DROPDOWN FOOTER */
+    .footer-nav .dropdown-menu {
+      background: var(--verde-mid);
+      border-color: rgba(255, 255, 255, .15);
+    }
+
+    .footer-nav .dropdown-menu a {
+      color: rgba(255, 255, 255, .8) !important;
+    }
+
+    .footer-nav .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, .1);
+      color: white !important;
+    }
+
+    .footer-nav .dropdown-menu::before {
+      background: var(--verde-mid);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-visual {
+        height: 320px;
+      }
+
+      .detalhe-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--creme);
+        border-bottom: 1px solid var(--creme-dark);
+        padding: 20px;
+        z-index: 300;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 12px 0;
+        width: 100%;
+        border-bottom: 1px solid var(--creme-dark);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0 0 0 16px;
+        display: none;
+      }
+
+      .dropdown-menu::before {
+        display: none;
+      }
+
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu a {
+        padding: 8px 8px !important;
+        font-size: 14px !important;
+        border-bottom: 1px solid var(--creme-dark) !important;
+      }
+
+      .dropdown-menu a::before {
+        display: none !important;
+      }
+
+      .cta-section {
+        padding: 40px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer .dropdown-menu {
+        background: rgba(255, 255, 255, .08);
+      }
+    }
+
+    /* ============================================================
+       MOBILE MENU FIX — applied to all pages
+       ============================================================ */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex !important;
+      }
+
+      /* Hide desktop nav; show when toggled */
+      nav#menu,
+      nav.menu {
+        display: none !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(249, 246, 240, 0.99) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 90px 28px 40px !important;
+        gap: 0 !important;
+        z-index: 9000 !important;
+        overflow-y: auto !important;
+        box-shadow: none !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+      }
+
+      nav#menu.show,
+      nav.menu.show {
+        display: flex !important;
+      }
+
+      /* Nav links */
+      nav#menu>a,
+      nav.menu>a {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        padding: 16px 0 !important;
+        border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+        color: #1a4a1e !important;
+        width: 100% !important;
+        display: block !important;
+        letter-spacing: 0 !important;
+        text-decoration: none !important;
+      }
+
+      nav#menu>a:last-child,
+      nav.menu>a:last-child {
+        border-bottom: none !important;
+        margin-top: 12px !important;
+      }
+
+      /* CTA button inside mobile menu */
+      nav#menu .nav-cta,
+      nav.menu .nav-cta {
+        background: #1a4a1e !important;
+        color: #fff !important;
+        border-radius: 50px !important;
+        padding: 16px 28px !important;
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        margin-top: 8px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Dropdown wrapper inside mobile menu */
+      nav#menu .dropdown,
+      nav.menu .dropdown {
+        width: 100% !important;
+        border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+      }
+
+      /* Dropdown trigger link */
+      nav#menu .dropdown>a,
+      nav.menu .dropdown>a {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        padding: 16px 0 !important;
+        color: #1a4a1e !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-bottom: none !important;
+        text-decoration: none !important;
+      }
+
+      /* Dropdown sub-menu: static inside mobile nav */
+      nav#menu .dropdown-menu,
+      nav.menu .dropdown-menu {
+        position: static !important;
+        display: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 0 8px 16px !important;
+        min-width: auto !important;
+        width: 100% !important;
+        background: transparent !important;
+        left: auto !important;
+        top: auto !important;
+      }
+
+      nav#menu .dropdown-menu::before,
+      nav.menu .dropdown-menu::before {
+        display: none !important;
+      }
+
+      nav#menu .dropdown.open .dropdown-menu,
+      nav.menu .dropdown.open .dropdown-menu {
+        display: block !important;
+      }
+
+      nav#menu .dropdown-menu a,
+      nav.menu .dropdown-menu a {
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        padding: 12px 8px !important;
+        color: #2e7d32 !important;
+        border-bottom: 1px solid rgba(106, 158, 110, .12) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        text-decoration: none !important;
+        width: 100% !important;
+        white-space: normal !important;
+      }
+
+      nav#menu .dropdown-menu a:last-child,
+      nav.menu .dropdown-menu a:last-child {
+        border-bottom: none !important;
+      }
+
+      /* Chevron rotation on open */
+      nav#menu .dropdown.open .dropdown-chevron,
+      nav.menu .dropdown.open .dropdown-chevron {
+        transform: rotate(180deg) !important;
+      }
+    }
+
+    /* Close button inside mobile menu */
+    .menu-close-btn {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-close-btn {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(26, 74, 30, .08);
+        border: none;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: #1a4a1e;
+        z-index: 9001;
+        flex-shrink: 0;
+      }
+    }
+
+    /* ============================================================
+       HERO MOBILE FIX
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: auto !important;
+        overflow: hidden !important;
+      }
+      .hero > .container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .hero-content {
+        padding: 48px 6% 32px !important;
+        order: 2 !important;
+      }
+      .hero-visual {
+        order: 1 !important;
+        height: 280px !important;
+        width: 100% !important;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 9vw, 52px) !important;
+      }
+      .hero-desc {
+        font-size: 15px !important;
+        max-width: 100% !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-content {
+        padding: 36px 5% 28px !important;
+      }
+      .hero-visual {
+        height: 220px !important;
+      }
+      .cta-section {
+        padding: 32px 20px !important;
+        border-radius: 20px !important;
+      }
+      .tira-inner {
+        gap: 20px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 0 6% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <a href="index.html" class="logo">
+          <img src="33.png" alt="D'Areia Ambiental" class="logo-img">
+        </a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="menu">
+          <a href="index.html">Início</a>
+          <div class="dropdown" id="dropdownProdutos">
+            <a href="#" onclick="toggleDropdownProdutos(event)">Produtos <span class="dropdown-chevron">▼</span></a>
+            <div class="dropdown-menu">
+              <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
+              <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
+              <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
+              <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
+            </div>
+          </div>
+          <div class="dropdown" id="dropdownServicos">
+            <a href="#" class="ativo" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span
+                class="dropdown-chevron">▼</span></a>
+            <div class="dropdown-menu">
+              <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
+              <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
+              <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Poço Artesiano</a>
+              <a href="servico-playground.html"><span class="dropdown-dot"></span> Playground</a>
+              <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
+              <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo & Decoração</a>
+            </div>
+          </div>
+          <a href="contato.html">Contato</a>
+          <a href="https://wa.me/5511973220218" class="nav-cta">Solicitar Orçamento</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container" style="display:contents;">
+      <div class="hero-content" style="padding:80px 0;">
+        <span class="hero-eyebrow">Fornecimento</span>
+        <h1>Areia para<br><em>Hidro Jateamento</em></h1>
+        <p class="hero-desc">Fornecimento de areia para jateamento e limpeza de alta pressão. Abrasivo natural de granulometria controlada, ideal para remoção de sujeira e incrustações em superfícies diversas.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5511973220218" class="btn-hero btn-hero-primary">
+            Solicitar Orçamento <span class="hero-arrow">→</span>
+          </a>
+          <a href="#detalhes" class="btn-hero btn-hero-ghost">Ver Detalhes</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="hidroo.png" alt="Hidro">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIRA -->
+  <div class="tira">
+    <div class="container">
+      <div class="tira-inner">
+        <div class="tira-item"><span class="tira-dot"></span> Abrasivo Natural</div>
+        <div class="tira-item"><span class="tira-dot"></span> Granulometria Controlada</div>
+        <div class="tira-item"><span class="tira-dot"></span> Entrega em toda Região</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVISO FORNECIMENTO -->
+  <div style="position:relative;z-index:1;">
+    <div style="width:92%;max-width:1200px;margin:0 auto;padding:28px 0 0;">
+      <div style="background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:12px;padding:18px 24px;display:flex;align-items:flex-start;gap:14px;">
+        <span style="font-size:20px;line-height:1;flex-shrink:0;">ℹ️</span>
+        <p style="color:#4a7a4e;font-size:14px;line-height:1.6;font-family:'DM Sans',sans-serif;margin:0;"><strong style="color:#1a4f1c;">Somos fornecedores de areia — não executamos o serviço.</strong> A D'Areia Ambiental entrega o material certo para a sua obra ou projeto. A execução (instalação, montagem, perfuração, etc.) fica a cargo do profissional ou empresa contratada por você.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETALHE -->
+  <section class="detalhe-section" id="detalhes">
+    <div class="container">
+      <div class="detalhe-layout">
+        <div class="detalhe-imagem">
+          <img src="hidro.jpg" alt="Hidro">
+          <span class="detalhe-label">Fornecimento</span>
+        </div>
+        <div class="detalhe-info">
+          <p class="section-eyebrow">Nossos Produtos</p>
+          <h2 class="detalhe-titulo">Areia para Hidro Jateamento</h2>
+          <p class="detalhe-texto">Fornecemos areia para jateamento de alta pressão, utilizada como abrasivo natural na limpeza de fachadas, calçadas, piscinas, tubulações e superfícies industriais. Nossa areia é selecionada para garantir eficiência na remoção de sujeira e incrustações.</p>
+          <p class="detalhe-texto">Trabalhamos com areia de granulometria controlada, ideal para equipamentos de hidro jateamento. Produto limpo, seco e pronto para aplicação. Disponível em sacos e big bag para atender desde pequenas obras até grandes projetos industriais.</p>
+          <ul class="beneficios">
+            <li>Areia abrasiva natural de alta qualidade</li>
+            <li>Granulometria controlada para jateamento</li>
+            <li>Ideal para fachadas, pisos e tubulações</li>
+            <li>Produto limpo e seco, pronto para uso</li>
+            <li>Disponível em sacos e big bag</li>
+          </ul>
+          <span class="estoque-badge">Fornecimento disponível</span><br><br>
+          <a href="https://wa.me/5511973220218" class="btn-solicitar-grande">Pedir via WhatsApp ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="container">
+    <div class="cta-section">
+      <div>
+        <p class="cta-tag">Fale Conosco</p>
+        <h2>Precisa de areia<br>para jateamento?</h2>
+        <p>Entre em contato e receba uma cotação.</p>
+      </div>
+      <div class="cta-acoes">
+        <a href="https://wa.me/5511973220218" class="btn-wpp">💬 Chamar no WhatsApp</a>
+        <a href="contato.html" class="btn-voltar">ou enviar mensagem →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div></div>
+        <nav class="footer-nav">
+          <a href="index.html">Início</a>
+          <div class="dropdown" id="dropdownProdutosFooter">
+            <a href="#" onclick="toggleDropdownProdutosFooter(event)">Produtos ▾</a>
+            <div class="dropdown-menu">
+              <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
+              <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
+              <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
+              <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
+            </div>
+          </div>
+          <div class="dropdown" id="dropdownServicosFooter">
+            <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia p/ Serviços ▾</a>
+            <div class="dropdown-menu">
+              <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
+              <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
+              <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Poço Artesiano</a>
+              <a href="servico-playground.html"><span class="dropdown-dot"></span> Playground</a>
+              <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
+              <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo & Decoração</a>
+            </div>
+          </div>
+          <a href="contato.html">Contato</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 D'Areia Ambiental. Todos os direitos reservados.</p>
+        <div class="footer-eco">🌿 Empresa comprometida com o meio ambiente</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.toggle('show');
+      btn.classList.toggle('ativo');
+    }
+    function toggleDropdownProdutos(e) {
+      e.preventDefault();
+      document.getElementById('dropdownProdutos')?.classList.toggle('open');
+    }
+    function toggleDropdownServicos(e) {
+      e.preventDefault();
+      document.getElementById('dropdownServicos')?.classList.toggle('open');
+    }
+    function toggleDropdownProdutosFooter(e) {
+      e.preventDefault();
+      document.getElementById('dropdownProdutosFooter')?.classList.toggle('open');
+    }
+    function toggleDropdownServicosFooter(e) {
+      e.preventDefault();
+      document.getElementById('dropdownServicosFooter')?.classList.toggle('open');
+    }
+    document.addEventListener('click', (e) => {
+      ['dropdownProdutos', 'dropdownServicos', 'dropdownProdutosFooter', 'dropdownServicosFooter'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.contains(e.target)) el.classList.remove('open');
+      });
+      const menu = document.getElementById('menu');
+      const btn = document.getElementById('hamburger');
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('show');
+        btn.classList.remove('ativo');
+      }
+    });
+  </script>
+
+  <script>
+
+    // ── Mobile Menu (global fix) ──────────────────────────────
+    (function () {
+      function getMenu() { return document.getElementById('menu'); }
+      function getHamburger() { return document.getElementById('hamburger'); }
+
+      window.toggleMenu = function () {
+        var menu = getMenu();
+        var btn = getHamburger();
+        if (!menu) return;
+        var isOpen = menu.classList.toggle('show');
+        if (btn) btn.classList.toggle('ativo', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      };
+
+      window.closeMenu = function () {
+        var menu = getMenu();
+        var btn = getHamburger();
+        if (menu) menu.classList.remove('show');
+        if (btn) btn.classList.remove('ativo');
+        document.body.style.overflow = '';
+      };
+
+      // Generic dropdown toggle — works for any dropdown id passed
+      window.toggleDropdownById = function (e, id) {
+        e.preventDefault();
+        e.stopPropagation();
+        var el = document.getElementById(id);
+        if (!el) return;
+        // Close all other dropdowns first
+        document.querySelectorAll('.dropdown.open').forEach(function (d) {
+          if (d !== el) d.classList.remove('open');
+        });
+        el.classList.toggle('open');
+      };
+
+      // Legacy named functions (keep backward compat)
+      window.toggleDropdown = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
+      window.toggleDropdownServicos = function (e) { window.toggleDropdownById(e, 'dropdownServicos'); };
+      window.toggleDropdownProdutos = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
+      window.toggleDropdownProdutosFooter = function (e) { window.toggleDropdownById(e, 'dropdownProdutosFooter'); };
+      window.toggleDropdownServicosFooter = function (e) { window.toggleDropdownById(e, 'dropdownServicosFooter'); };
+
+      // Close menu when a non-dropdown nav link is clicked
+      document.addEventListener('DOMContentLoaded', function () {
+        var menu = getMenu();
+        if (!menu) return;
+
+        // Add close button to nav if not already present
+        if (!menu.querySelector('.menu-close-btn')) {
+          var closeBtn = document.createElement('button');
+          closeBtn.className = 'menu-close-btn';
+          closeBtn.setAttribute('aria-label', 'Fechar menu');
+          closeBtn.innerHTML = '&#x2715;';
+          closeBtn.onclick = window.closeMenu;
+          menu.insertBefore(closeBtn, menu.firstChild);
+        }
+
+        // Direct links (not inside dropdowns) close the menu on click
+        menu.querySelectorAll(':scope > a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
+            window.closeMenu();
+          });
+        });
+
+        // Dropdown sub-links close the whole menu
+        menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            window.closeMenu();
+          });
+        });
+      });
+
+      // Click outside closes everything
+      document.addEventListener('click', function (e) {
+        var menu = getMenu();
+        var btn = getHamburger();
+        if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+          window.closeMenu();
+        }
+        // Close open dropdowns when clicking outside them
+        document.querySelectorAll('.dropdown.open').forEach(function (d) {
+          if (!d.contains(e.target)) d.classList.remove('open');
+        });
+      });
+
+      // Escape key closes menu
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') window.closeMenu();
+      });
+    })();
+
+  </script>
+</body>
+
+</html>
