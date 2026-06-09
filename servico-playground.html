@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D'Areia Ambiental | Playground</title>
+  <title>D'Areia Ambiental | Areia para Playground</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet">
@@ -989,6 +989,33 @@
         flex-shrink: 0;
       }
     }
+
+    @media (max-width: 900px) {
+      .hero > .container {
+        grid-template-columns: 1fr !important;
+      }
+      .hero-content {
+        padding: 48px 0 24px !important;
+      }
+      .hero-visual {
+        height: 260px !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 36px !important;
+        letter-spacing: -0.5px !important;
+      }
+      .hero-desc {
+        font-size: 15px !important;
+      }
+      .cta-section {
+        padding: 32px 20px !important;
+      }
+      .tira-inner {
+        gap: 20px !important;
+      }
+    }
   </style>
 </head>
 
@@ -1016,7 +1043,7 @@
             </div>
           </div>
           <div class="dropdown" id="dropdownServicos">
-            <a href="#" class="ativo" onclick="toggleDropdownServicos(event)">Areia pra Serviços <span
+            <a href="#" class="ativo" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span
                 class="dropdown-chevron">▼</span></a>
             <div class="dropdown-menu">
               <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
@@ -1036,8 +1063,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container" style="display:contents;">
-      <div class="hero-content" style="padding-left:max(4%, calc((100vw - 1104px) / 2));">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;width:92%;max-width:1200px;margin:0 auto;">
+      <div class="hero-content" style="padding:80px 0;">
         <span class="hero-eyebrow">Fornecimento</span>
         <h1>Areia para<br><em>Playground</em></h1>
         <p class="hero-desc">Fornecemos areia de qualidade para o piso de playgrounds — material macio, limpo e seguro que amortece quedas e proporciona proteção para as crianças.</p>
@@ -1086,7 +1113,7 @@
           <span class="detalhe-label">Fornecimento</span>
         </div>
         <div class="detalhe-info">
-          <p class="section-eyebrow">Areia pra Serviços</p>
+          <p class="section-eyebrow">Nossos Produtos</p>
           <h2 class="detalhe-titulo">Areia para Playground</h2>
           <p class="detalhe-texto">A D'Areia Ambiental <strong>fornece a areia</strong> utilizada no piso de playgrounds — não realizamos a montagem ou instalação dos equipamentos. Entregamos o material correto para quem cuida da obra ter uma base segura, fofa e adequada para o lazer infantil.</p>
           <p class="detalhe-texto">A areia para playground precisa ser limpa, lavada e isenta de impurezas para garantir a segurança das crianças. Ela funciona como camada amortecedora, reduzindo o impacto de quedas. Entregamos em sacos ou granel, conforme o volume necessário para o projeto.</p>
@@ -1136,7 +1163,7 @@
             </div>
           </div>
           <div class="dropdown" id="dropdownServicosFooter">
-            <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia pra Serviços ▾</a>
+            <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia p/ Serviços ▾</a>
             <div class="dropdown-menu">
               <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
               <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
