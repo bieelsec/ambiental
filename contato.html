@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -29,11 +30,11 @@
             --texto: #1a1a18;
             --muted: #6b6b60;
             --branco: #ffffff;
+            --wpp: #25D366;
+            --wpp-dark: #128C7E;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'DM Sans', sans-serif;
@@ -53,7 +54,7 @@
             opacity: .6;
         }
 
-        /* HEADER */
+        /* ── HEADER ── */
         header {
             position: sticky;
             top: 0;
@@ -105,9 +106,7 @@
             z-index: 200;
         }
 
-        .hamburger:hover {
-            background: var(--verde-pale);
-        }
+        .hamburger:hover { background: var(--verde-pale); }
 
         .hamburger span {
             display: block;
@@ -119,18 +118,9 @@
             transform-origin: center;
         }
 
-        .hamburger.ativo span:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
-        }
-
-        .hamburger.ativo span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .hamburger.ativo span:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
-        }
+        .hamburger.ativo span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.ativo span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.ativo span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
         nav {
             display: flex;
@@ -147,14 +137,8 @@
             transition: color .2s;
         }
 
-        nav a:hover {
-            color: var(--verde);
-        }
-
-        nav a.ativo {
-            color: var(--verde);
-            font-weight: 700;
-        }
+        nav a:hover { color: var(--verde); }
+        nav a.ativo { color: var(--verde); font-weight: 700; }
 
         .nav-cta {
             background: var(--verde) !important;
@@ -171,13 +155,8 @@
         }
 
         /* DROPDOWN */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown>a {
-            cursor: pointer;
-        }
+        .dropdown { position: relative; }
+        .dropdown>a { cursor: pointer; }
 
         .dropdown-menu {
             position: absolute;
@@ -189,7 +168,7 @@
             border-radius: 16px;
             padding: 10px 0;
             min-width: 220px;
-            box-shadow: 0 12px 40px rgba(26, 79, 28, .12);
+            box-shadow: 0 12px 40px rgba(26,79,28,.12);
             opacity: 0;
             visibility: hidden;
             transition: opacity .25s, visibility .25s, transform .25s;
@@ -241,9 +220,7 @@
             transition: background .15s;
         }
 
-        .dropdown-menu a:hover .dropdown-dot {
-            background: var(--verde-mid);
-        }
+        .dropdown-menu a:hover .dropdown-dot { background: var(--verde-mid); }
 
         .dropdown-chevron {
             font-size: 10px;
@@ -251,17 +228,16 @@
             transition: transform .25s;
         }
 
-        .dropdown:hover .dropdown-chevron {
-            transform: rotate(180deg);
-        }
+        .dropdown:hover .dropdown-chevron { transform: rotate(180deg); }
 
-        /* HERO SPLIT */
+        /* ── HERO SPLIT ── */
         .hero-contact {
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: calc(100vh - 127px);
         }
 
+        /* ── ESQUERDA ── */
         .hero-left {
             background: var(--verde);
             padding: 80px 64px;
@@ -275,24 +251,24 @@
         .hero-left::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 520px;
+            height: 520px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, .08);
-            top: -160px;
-            right: -180px;
+            border: 1px solid rgba(255,255,255,.07);
+            top: -170px;
+            right: -190px;
             pointer-events: none;
         }
 
         .hero-left::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, .06);
-            bottom: -100px;
-            left: -80px;
+            border: 1px solid rgba(255,255,255,.05);
+            bottom: -110px;
+            left: -90px;
             pointer-events: none;
         }
 
@@ -300,9 +276,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, .1);
-            border: 1px solid rgba(255, 255, 255, .18);
-            color: rgba(255, 255, 255, .85);
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.18);
+            color: rgba(255,255,255,.85);
             font-size: 11px;
             font-weight: 600;
             letter-spacing: 2.5px;
@@ -337,66 +313,75 @@
             color: var(--areia);
         }
 
-        .hero-left>p {
+        .hero-left > p {
             font-size: 17px;
-            color: rgba(255, 255, 255, .7);
+            color: rgba(255,255,255,.7);
             line-height: 1.8;
             max-width: 400px;
             font-weight: 300;
-            margin-bottom: 56px;
+            margin-bottom: 52px;
         }
 
         .info-blocks {
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 0;
         }
 
         .info-block {
             display: flex;
             gap: 18px;
             align-items: flex-start;
+            padding: 20px 0;
             opacity: 0;
             transform: translateX(-20px);
             animation: slideIn .6s ease forwards;
+            position: relative;
         }
 
-        .info-block:nth-child(1) {
-            animation-delay: .2s;
+        .info-block:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,.09);
         }
 
-        .info-block:nth-child(2) {
-            animation-delay: .35s;
-        }
-
-        .info-block:nth-child(3) {
-            animation-delay: .5s;
-        }
+        .info-block:nth-child(1) { animation-delay: .2s; }
+        .info-block:nth-child(2) { animation-delay: .35s; }
+        .info-block:nth-child(3) { animation-delay: .5s; }
 
         @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .info-icon {
             width: 48px;
             height: 48px;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, .1);
-            border: 1px solid rgba(255, 255, 255, .15);
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.14);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
+            margin-top: 2px;
+        }
+
+        /* WhatsApp icon override */
+        .info-icon.wpp-icon {
+            background: rgba(37, 211, 102, .18);
+            border-color: rgba(37, 211, 102, .3);
         }
 
         .info-text {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
+            flex: 1;
         }
 
         .info-label {
@@ -405,6 +390,15 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--areia);
+            margin-bottom: 2px;
+        }
+
+        /* WhatsApp clickable row */
+        .wpp-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .info-value {
@@ -416,17 +410,61 @@
 
         .info-sub {
             font-size: 12px;
-            color: rgba(255, 255, 255, .5);
+            color: rgba(255,255,255,.5);
             margin-top: 2px;
         }
 
-        .info-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, .1);
-            margin: 4px 0;
+        /* WhatsApp pill button */
+        .btn-wpp-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--wpp);
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px 5px 8px;
+            border-radius: 50px;
+            transition: background .2s, transform .15s, box-shadow .2s;
+            box-shadow: 0 3px 12px rgba(37,211,102,.35);
+            white-space: nowrap;
+            letter-spacing: .2px;
         }
 
-        /* FORM PANEL */
+        .btn-wpp-pill:hover {
+            background: var(--wpp-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(37,211,102,.45);
+        }
+
+        .btn-wpp-pill svg {
+            flex-shrink: 0;
+        }
+
+        /* Maps button */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.2);
+            color: rgba(255,255,255,.9);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 50px;
+            margin-top: 8px;
+            transition: background .2s;
+            width: fit-content;
+        }
+
+        .btn-maps:hover {
+            background: rgba(255,255,255,.2);
+        }
+
+        /* ── DIREITA — FORM ── */
         .hero-right {
             background: var(--creme);
             padding: 80px 64px;
@@ -470,9 +508,7 @@
             gap: 16px;
         }
 
-        .form-full {
-            grid-column: 1 / -1;
-        }
+        .form-full { grid-column: 1 / -1; }
 
         .field {
             display: flex;
@@ -509,13 +545,11 @@
         .field select:focus,
         .field textarea:focus {
             border-color: var(--verde-mid);
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, .1);
+            box-shadow: 0 0 0 3px rgba(46,125,50,.1);
         }
 
         .field input::placeholder,
-        .field textarea::placeholder {
-            color: #b0b0a0;
-        }
+        .field textarea::placeholder { color: #b0b0a0; }
 
         .field textarea {
             resize: vertical;
@@ -554,23 +588,19 @@
             cursor: pointer;
             transition: all .25s;
             letter-spacing: .2px;
-            box-shadow: 0 8px 28px rgba(26, 79, 28, .25);
+            box-shadow: 0 8px 28px rgba(26,79,28,.25);
         }
 
         .btn-submit:hover {
             background: var(--verde-mid);
             transform: translateY(-2px);
-            box-shadow: 0 14px 36px rgba(26, 79, 28, .32);
+            box-shadow: 0 14px 36px rgba(26,79,28,.32);
         }
 
-        .btn-submit svg {
-            transition: transform .25s;
-        }
+        .btn-submit svg { transition: transform .25s; }
+        .btn-submit:hover svg { transform: translateX(4px); }
 
-        .btn-submit:hover svg {
-            transform: translateX(4px);
-        }
-
+        /* WhatsApp inline link in form */
         .btn-wpp-inline {
             display: inline-flex;
             align-items: center;
@@ -585,10 +615,13 @@
         }
 
         .btn-wpp-inline:hover {
-            color: var(--verde);
-            border-color: var(--verde-pale);
+            color: var(--wpp-dark);
+            border-color: #b7dfb9;
         }
 
+        .btn-wpp-inline .wpp-svg { color: var(--wpp); }
+
+        /* Success state */
         .form-success {
             display: none;
             flex-direction: column;
@@ -601,15 +634,8 @@
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .success-icon {
@@ -638,7 +664,7 @@
             max-width: 320px;
         }
 
-        /* STRIP */
+        /* ── STRIP ── */
         .strip {
             background: var(--verde);
             padding: 24px 0;
@@ -656,7 +682,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: rgba(255, 255, 255, .75);
+            color: rgba(255,255,255,.75);
             font-size: 13px;
             font-weight: 500;
         }
@@ -669,10 +695,10 @@
             flex-shrink: 0;
         }
 
-        /* FOOTER */
+        /* ── FOOTER ── */
         footer {
             background: var(--verde);
-            border-top: 1px solid rgba(255, 255, 255, .08);
+            border-top: 1px solid rgba(255,255,255,.08);
             padding: 0;
         }
 
@@ -686,7 +712,7 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, .55);
+            color: rgba(255,255,255,.55);
             font-size: 13px;
             line-height: 1.7;
             max-width: 260px;
@@ -709,18 +735,16 @@
         }
 
         .footer-nav a {
-            color: rgba(255, 255, 255, .65);
+            color: rgba(255,255,255,.65);
             text-decoration: none;
             font-size: 14px;
             transition: color .2s;
         }
 
-        .footer-nav a:hover {
-            color: white;
-        }
+        .footer-nav a:hover { color: white; }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, .1);
+            border-top: 1px solid rgba(255,255,255,.1);
             padding: 22px 0;
             display: flex;
             justify-content: space-between;
@@ -730,50 +754,35 @@
         }
 
         .footer-bottom p {
-            color: rgba(255, 255, 255, .4);
+            color: rgba(255,255,255,.4);
             font-size: 12px;
         }
 
         .footer-eco {
-            color: rgba(255, 255, 255, .4);
+            color: rgba(255,255,255,.4);
             font-size: 12px;
         }
 
         .footer-nav .dropdown-menu {
             background: #2a5e2d;
-            border-color: rgba(255, 255, 255, .12);
+            border-color: rgba(255,255,255,.12);
         }
 
-        .footer-nav .dropdown-menu a {
-            color: rgba(255, 255, 255, .75) !important;
-        }
+        .footer-nav .dropdown-menu a { color: rgba(255,255,255,.75) !important; }
 
         .footer-nav .dropdown-menu a:hover {
-            background: rgba(255, 255, 255, .1);
+            background: rgba(255,255,255,.1);
             color: white !important;
         }
 
-        .footer-nav .dropdown-menu::before {
-            background: #2a5e2d;
-        }
+        .footer-nav .dropdown-menu::before { background: #2a5e2d; }
 
-        /* RESPONSIVE */
+        /* ── RESPONSIVE ── */
         @media (max-width: 960px) {
-            .hero-contact {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-left {
-                padding: 60px 32px;
-            }
-
-            .hero-right {
-                padding: 60px 32px;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-contact { grid-template-columns: 1fr; }
+            .hero-left  { padding: 60px 32px; }
+            .hero-right { padding: 60px 32px; }
+            .form-grid  { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -784,18 +793,15 @@
                 gap: 0;
                 position: absolute;
                 top: 100%;
-                left: 0;
-                right: 0;
+                left: 0; right: 0;
                 background: var(--creme);
                 border-bottom: 1px solid var(--creme-dark);
                 padding: 20px;
                 z-index: 300;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+                box-shadow: 0 8px 30px rgba(0,0,0,.08);
             }
 
-            nav.show {
-                display: flex;
-            }
+            nav.show { display: flex; }
 
             nav a {
                 padding: 12px 0;
@@ -803,9 +809,7 @@
                 border-bottom: 1px solid var(--creme-dark);
             }
 
-            .hamburger {
-                display: flex;
-            }
+            .hamburger { display: flex; }
 
             .dropdown-menu {
                 position: static;
@@ -819,13 +823,8 @@
                 display: none;
             }
 
-            .dropdown-menu::before {
-                display: none;
-            }
-
-            .dropdown.open .dropdown-menu {
-                display: block;
-            }
+            .dropdown-menu::before { display: none; }
+            .dropdown.open .dropdown-menu { display: block; }
 
             .dropdown-menu a {
                 padding: 8px 8px !important;
@@ -833,51 +832,29 @@
                 border-bottom: 1px solid var(--creme-dark) !important;
             }
 
-            .strip-inner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-top {
-                flex-direction: column;
-                gap: 32px;
-            }
-
-            .footer-nav {
-                flex-direction: column;
-                gap: 12px;
-            }
+            .strip-inner { flex-direction: column; align-items: flex-start; }
+            .footer-top  { flex-direction: column; gap: 32px; }
+            .footer-nav  { flex-direction: column; gap: 12px; }
         }
 
         @media (max-width: 480px) {
-
             .hero-left,
-            .hero-right {
-                padding: 48px 24px;
-            }
+            .hero-right { padding: 48px 24px; }
         }
 
-        /* ============================================================
-       MOBILE MENU FIX — applied to all pages
-       ============================================================ */
+        /* ── MOBILE MENU FIX ── */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex !important;
-            }
+            .hamburger { display: flex !important; }
 
-            /* Hide desktop nav; show when toggled */
-            nav#menu,
-            nav.menu {
+            nav#menu, nav.menu {
                 display: none !important;
                 flex-direction: column !important;
                 position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-                bottom: 0 !important;
+                top: 0 !important; left: 0 !important;
+                right: 0 !important; bottom: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
-                background: rgba(249, 246, 240, 0.99) !important;
+                background: rgba(249,246,240,0.99) !important;
                 backdrop-filter: blur(20px) !important;
                 padding: 90px 28px 40px !important;
                 gap: 0 !important;
@@ -888,18 +865,13 @@
                 justify-content: flex-start !important;
             }
 
-            nav#menu.show,
-            nav.menu.show {
-                display: flex !important;
-            }
+            nav#menu.show, nav.menu.show { display: flex !important; }
 
-            /* Nav links */
-            nav#menu>a,
-            nav.menu>a {
+            nav#menu > a, nav.menu > a {
                 font-size: 18px !important;
                 font-weight: 600 !important;
                 padding: 16px 0 !important;
-                border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+                border-bottom: 1px solid rgba(106,158,110,.18) !important;
                 color: #1a4a1e !important;
                 width: 100% !important;
                 display: block !important;
@@ -907,15 +879,12 @@
                 text-decoration: none !important;
             }
 
-            nav#menu>a:last-child,
-            nav.menu>a:last-child {
+            nav#menu > a:last-child, nav.menu > a:last-child {
                 border-bottom: none !important;
                 margin-top: 12px !important;
             }
 
-            /* CTA button inside mobile menu */
-            nav#menu .nav-cta,
-            nav.menu .nav-cta {
+            nav#menu .nav-cta, nav.menu .nav-cta {
                 background: #1a4a1e !important;
                 color: #fff !important;
                 border-radius: 50px !important;
@@ -929,16 +898,12 @@
                 box-sizing: border-box !important;
             }
 
-            /* Dropdown wrapper inside mobile menu */
-            nav#menu .dropdown,
-            nav.menu .dropdown {
+            nav#menu .dropdown, nav.menu .dropdown {
                 width: 100% !important;
-                border-bottom: 1px solid rgba(106, 158, 110, .18) !important;
+                border-bottom: 1px solid rgba(106,158,110,.18) !important;
             }
 
-            /* Dropdown trigger link */
-            nav#menu .dropdown>a,
-            nav.menu .dropdown>a {
+            nav#menu .dropdown > a, nav.menu .dropdown > a {
                 font-size: 18px !important;
                 font-weight: 600 !important;
                 padding: 16px 0 !important;
@@ -951,9 +916,7 @@
                 text-decoration: none !important;
             }
 
-            /* Dropdown sub-menu: static inside mobile nav */
-            nav#menu .dropdown-menu,
-            nav.menu .dropdown-menu {
+            nav#menu .dropdown-menu, nav.menu .dropdown-menu {
                 position: static !important;
                 display: none !important;
                 opacity: 1 !important;
@@ -970,23 +933,17 @@
                 top: auto !important;
             }
 
-            nav#menu .dropdown-menu::before,
-            nav.menu .dropdown-menu::before {
-                display: none !important;
-            }
+            nav#menu .dropdown-menu::before, nav.menu .dropdown-menu::before { display: none !important; }
 
             nav#menu .dropdown.open .dropdown-menu,
-            nav.menu .dropdown.open .dropdown-menu {
-                display: block !important;
-            }
+            nav.menu .dropdown.open .dropdown-menu { display: block !important; }
 
-            nav#menu .dropdown-menu a,
-            nav.menu .dropdown-menu a {
+            nav#menu .dropdown-menu a, nav.menu .dropdown-menu a {
                 font-size: 15px !important;
                 font-weight: 500 !important;
                 padding: 12px 8px !important;
                 color: #2e7d32 !important;
-                border-bottom: 1px solid rgba(106, 158, 110, .12) !important;
+                border-bottom: 1px solid rgba(106,158,110,.12) !important;
                 display: flex !important;
                 align-items: center !important;
                 gap: 8px !important;
@@ -996,21 +953,13 @@
             }
 
             nav#menu .dropdown-menu a:last-child,
-            nav.menu .dropdown-menu a:last-child {
-                border-bottom: none !important;
-            }
+            nav.menu .dropdown-menu a:last-child { border-bottom: none !important; }
 
-            /* Chevron rotation on open */
             nav#menu .dropdown.open .dropdown-chevron,
-            nav.menu .dropdown.open .dropdown-chevron {
-                transform: rotate(180deg) !important;
-            }
+            nav.menu .dropdown.open .dropdown-chevron { transform: rotate(180deg) !important; }
         }
 
-        /* Close button inside mobile menu */
-        .menu-close-btn {
-            display: none;
-        }
+        .menu-close-btn { display: none; }
 
         @media (max-width: 768px) {
             .menu-close-btn {
@@ -1021,7 +970,7 @@
                 width: 44px;
                 height: 44px;
                 border-radius: 50%;
-                background: rgba(26, 74, 30, .08);
+                background: rgba(26,74,30,.08);
                 border: none;
                 cursor: pointer;
                 align-items: center;
@@ -1031,6 +980,45 @@
                 z-index: 9001;
                 flex-shrink: 0;
             }
+        }
+
+        /* ── FLOATING WhatsApp button ── */
+        .fab-wpp {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            background: var(--wpp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37,211,102,.45);
+            z-index: 500;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .fab-wpp:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 10px 32px rgba(37,211,102,.55);
+        }
+
+        .fab-wpp::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--wpp);
+            animation: pulse-wpp 2.4s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse-wpp {
+            0%   { transform: scale(1); opacity: .6; }
+            70%  { transform: scale(1.55); opacity: 0; }
+            100% { transform: scale(1.55); opacity: 0; }
         }
     </style>
 </head>
@@ -1050,8 +1038,7 @@
                 <nav id="menu">
                     <a href="index.html">Início</a>
                     <div class="dropdown" id="dropdownProdutos">
-                        <a href="#" onclick="toggleDropdownProdutos(event)">Produtos <span
-                                class="dropdown-chevron">▼</span></a>
+                        <a href="#" onclick="toggleDropdownProdutos(event)">Produtos <span class="dropdown-chevron">▼</span></a>
                         <div class="dropdown-menu">
                             <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
                             <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
@@ -1060,19 +1047,14 @@
                         </div>
                     </div>
                     <div class="dropdown" id="dropdownServicos">
-                        <a href="#" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span
-                                class="dropdown-chevron">▼</span></a>
+                        <a href="#" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span class="dropdown-chevron">▼</span></a>
                         <div class="dropdown-menu">
-                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de
-                                Piscina</a>
-                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama
-                                Sintética</a>
+                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
+                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
                             <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
                             <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
-                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro
-                                Jateamento</a>
-                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp;
-                                Decoração</a>
+                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
+                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp; Decoração</a>
                         </div>
                     </div>
                     <a href="contato.html" class="ativo">Contato</a>
@@ -1089,19 +1071,34 @@
         <div class="hero-left">
             <div class="hero-eyebrow">Fale Conosco</div>
             <h1>Vamos<br>trabalhar<br><em>juntos</em></h1>
-            <p>Estamos prontos para atender orçamentos, tirar dúvidas e orientar cada projeto com atenção e agilidade.
-            </p>
+            <p>Estamos prontos para atender orçamentos, tirar dúvidas e orientar cada projeto com atenção e agilidade.</p>
 
             <div class="info-blocks">
+
+                <!-- WhatsApp -->
                 <div class="info-block">
-                    <div class="info-icon">📱</div>
+                    <div class="info-icon wpp-icon">
+                        <!-- SVG oficial WhatsApp -->
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </div>
                     <div class="info-text">
                         <span class="info-label">WhatsApp</span>
-                        <span class="info-value">(11) 97322-0218</span>
+                        <div class="wpp-row">
+                            <span class="info-value">(11) 97322-0218</span>
+                            <a href="https://wa.me/5511973220218" target="_blank" class="btn-wpp-pill" aria-label="Chamar no WhatsApp">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                Chamar agora
+                            </a>
+                        </div>
                         <span class="info-sub">Seg – Sex, 08h às 18h</span>
                     </div>
                 </div>
-                <div class="info-divider"></div>
+
+                <!-- E-mail -->
                 <div class="info-block">
                     <div class="info-icon">✉️</div>
                     <div class="info-text">
@@ -1110,19 +1107,20 @@
                         <span class="info-sub">Resposta em até 24h úteis</span>
                     </div>
                 </div>
-                <div class="info-divider"></div>
+
+                <!-- Localização -->
                 <div class="info-block">
                     <div class="info-icon">📍</div>
                     <div class="info-text">
                         <span class="info-label">Localização</span>
                         <span class="info-value">Descalvado — SP, Brasil</span>
                         <span class="info-sub">Entregas em toda a Região</span>
-
-                        <a href="https://maps.app.goo.gl/Jsonekfs9A2ALdU98" target="_blank" class="btn-maps">
+                        <a href="https://maps.google.com/?q=Descalvado+SP" target="_blank" class="btn-maps">
                             📍 Ver no Maps
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -1158,7 +1156,7 @@
                             <select id="assunto" name="assunto">
                                 <option value="" disabled selected>Selecione um assunto</option>
                                 <option>Orçamento de produtos</option>
-                                <option>Orçamento de areia pra serviços</option>
+                                <option>Orçamento de areia p/ serviços</option>
                                 <option>Dúvidas sobre produtos</option>
                                 <option>Parceria comercial</option>
                                 <option>Logística / Entrega</option>
@@ -1177,14 +1175,13 @@
                             Enviar mensagem
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
                             </svg>
                         </button>
                         <a href="https://wa.me/5511973220218" target="_blank" class="btn-wpp-inline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            <svg class="wpp-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
                             ou chamar no WhatsApp
                         </a>
@@ -1223,7 +1220,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <strong>D'Areia Ambiental</strong>
-                    <p>Soluções sustentáveis em areia e areia pra serviços para sua casa, empresa e projeto.</p>
+                    <p>Soluções sustentáveis em areia e areia p/ serviços para sua casa, empresa e projeto.</p>
                 </div>
                 <nav class="footer-nav">
                     <a href="index.html">Início</a>
@@ -1239,16 +1236,12 @@
                     <div class="dropdown" id="dropdownServicosFooter">
                         <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia p/ Serviços ▾</a>
                         <div class="dropdown-menu">
-                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de
-                                Piscina</a>
-                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama
-                                Sintética</a>
+                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
+                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
                             <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
                             <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
-                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro
-                                Jateamento</a>
-                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp;
-                                Decoração</a>
+                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
+                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp; Decoração</a>
                         </div>
                     </div>
                     <a href="contato.html">Contato</a>
@@ -1261,6 +1254,13 @@
         </div>
     </footer>
 
+    <!-- FAB WhatsApp flutuante -->
+    <a href="https://wa.me/5511973220218" target="_blank" class="fab-wpp" aria-label="Chamar no WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
     <script>
         function toggleMenu() {
             document.getElementById('menu').classList.toggle('show');
@@ -1270,24 +1270,27 @@
         function toggleDropdownServicos(e) { e.preventDefault(); document.getElementById('dropdownServicos')?.classList.toggle('open'); }
         function toggleDropdownProdutosFooter(e) { e.preventDefault(); document.getElementById('dropdownProdutosFooter')?.classList.toggle('open'); }
         function toggleDropdownServicosFooter(e) { e.preventDefault(); document.getElementById('dropdownServicosFooter')?.classList.toggle('open'); }
+
         document.addEventListener('click', (e) => {
             ['dropdownProdutos', 'dropdownServicos', 'dropdownProdutosFooter', 'dropdownServicosFooter'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el && !el.contains(e.target)) el.classList.remove('open');
             });
             const menu = document.getElementById('menu');
-            const btn = document.getElementById('hamburger');
+            const btn  = document.getElementById('hamburger');
             if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-                menu.classList.remove('show'); btn.classList.remove('ativo');
+                menu.classList.remove('show');
+                btn.classList.remove('ativo');
             }
         });
 
         function handleSubmit(e) {
             e.preventDefault();
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
+            const nome     = document.getElementById('nome').value.trim();
+            const email    = document.getElementById('email').value.trim();
             const mensagem = document.getElementById('mensagem').value.trim();
             let valid = true;
+
             [['nome', nome], ['email', email], ['mensagem', mensagem]].forEach(([id, val]) => {
                 const el = document.getElementById(id);
                 if (!val) {
@@ -1296,9 +1299,13 @@
                     valid = false;
                 }
             });
+
             if (!valid) return;
+
             const btn = document.querySelector('.btn-submit');
-            btn.textContent = 'Enviando…'; btn.disabled = true;
+            btn.textContent = 'Enviando…';
+            btn.disabled = true;
+
             setTimeout(() => {
                 document.getElementById('formWrap').style.display = 'none';
                 const s = document.getElementById('formSuccess');
@@ -1308,15 +1315,12 @@
     </script>
 
     <script>
-
-        // ── Mobile Menu (global fix) ──────────────────────────────
         (function () {
             function getMenu() { return document.getElementById('menu'); }
             function getHamburger() { return document.getElementById('hamburger'); }
 
             window.toggleMenu = function () {
-                var menu = getMenu();
-                var btn = getHamburger();
+                var menu = getMenu(), btn = getHamburger();
                 if (!menu) return;
                 var isOpen = menu.classList.toggle('show');
                 if (btn) btn.classList.toggle('ativo', isOpen);
@@ -1324,39 +1328,30 @@
             };
 
             window.closeMenu = function () {
-                var menu = getMenu();
-                var btn = getHamburger();
+                var menu = getMenu(), btn = getHamburger();
                 if (menu) menu.classList.remove('show');
                 if (btn) btn.classList.remove('ativo');
                 document.body.style.overflow = '';
             };
 
-            // Generic dropdown toggle — works for any dropdown id passed
             window.toggleDropdownById = function (e, id) {
-                e.preventDefault();
-                e.stopPropagation();
+                e.preventDefault(); e.stopPropagation();
                 var el = document.getElementById(id);
                 if (!el) return;
-                // Close all other dropdowns first
-                document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                    if (d !== el) d.classList.remove('open');
-                });
+                document.querySelectorAll('.dropdown.open').forEach(d => { if (d !== el) d.classList.remove('open'); });
                 el.classList.toggle('open');
             };
 
-            // Legacy named functions (keep backward compat)
-            window.toggleDropdown = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
-            window.toggleDropdownServicos = function (e) { window.toggleDropdownById(e, 'dropdownServicos'); };
-            window.toggleDropdownProdutos = function (e) { window.toggleDropdownById(e, 'dropdownProdutos'); };
-            window.toggleDropdownProdutosFooter = function (e) { window.toggleDropdownById(e, 'dropdownProdutosFooter'); };
-            window.toggleDropdownServicosFooter = function (e) { window.toggleDropdownById(e, 'dropdownServicosFooter'); };
+            window.toggleDropdown             = e => window.toggleDropdownById(e, 'dropdownProdutos');
+            window.toggleDropdownServicos     = e => window.toggleDropdownById(e, 'dropdownServicos');
+            window.toggleDropdownProdutos     = e => window.toggleDropdownById(e, 'dropdownProdutos');
+            window.toggleDropdownProdutosFooter = e => window.toggleDropdownById(e, 'dropdownProdutosFooter');
+            window.toggleDropdownServicosFooter = e => window.toggleDropdownById(e, 'dropdownServicosFooter');
 
-            // Close menu when a non-dropdown nav link is clicked
             document.addEventListener('DOMContentLoaded', function () {
                 var menu = getMenu();
                 if (!menu) return;
 
-                // Add close button to nav if not already present
                 if (!menu.querySelector('.menu-close-btn')) {
                     var closeBtn = document.createElement('button');
                     closeBtn.className = 'menu-close-btn';
@@ -1366,43 +1361,27 @@
                     menu.insertBefore(closeBtn, menu.firstChild);
                 }
 
-                // Direct links (not inside dropdowns) close the menu on click
-                menu.querySelectorAll(':scope > a').forEach(function (a) {
-                    a.addEventListener('click', function () {
+                menu.querySelectorAll(':scope > a').forEach(a => {
+                    a.addEventListener('click', () => {
                         if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
                         window.closeMenu();
                     });
                 });
 
-                // Dropdown sub-links close the whole menu
-                menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
-                    a.addEventListener('click', function () {
-                        window.closeMenu();
-                    });
+                menu.querySelectorAll('.dropdown-menu a').forEach(a => {
+                    a.addEventListener('click', () => window.closeMenu());
                 });
             });
 
-            // Click outside closes everything
-            document.addEventListener('click', function (e) {
-                var menu = getMenu();
-                var btn = getHamburger();
-                if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-                    window.closeMenu();
-                }
-                // Close open dropdowns when clicking outside them
-                document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                    if (!d.contains(e.target)) d.classList.remove('open');
-                });
+            document.addEventListener('click', e => {
+                var menu = getMenu(), btn = getHamburger();
+                if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) window.closeMenu();
+                document.querySelectorAll('.dropdown.open').forEach(d => { if (!d.contains(e.target)) d.classList.remove('open'); });
             });
 
-            // Escape key closes menu
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') window.closeMenu();
-            });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeMenu(); });
         })();
-
     </script>
+
 </body>
-
 </html>
-
