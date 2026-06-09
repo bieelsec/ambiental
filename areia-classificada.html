@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -616,6 +616,150 @@
       box-shadow: 0 14px 36px rgba(26, 79, 28, .32);
     }
 
+    /* ===== FORNECIMENTO ===== */
+    .fornecimento-section {
+      padding: 80px 0;
+      background: var(--verde-pale);
+      border-radius: 40px;
+      margin: 0 0 80px;
+    }
+
+    .fornecimento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .forn-card {
+      background: var(--branco);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--sombra-card);
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .forn-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(26, 79, 28, .16);
+    }
+
+    .forn-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .forn-body {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 12px;
+    }
+
+    .forn-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--verde-mid);
+      background: var(--verde-pale);
+      padding: 6px 14px;
+      border-radius: 50px;
+      align-self: flex-start;
+    }
+
+    .forn-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--verde);
+      line-height: 1.2;
+    }
+
+    .forn-peso {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--areia);
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -1px;
+    }
+
+    .forn-desc {
+      font-size: 14px;
+      color: var(--texto-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .forn-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 14px 24px;
+      border-radius: 50px;
+      background: var(--verde);
+      color: var(--branco);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 6px 20px rgba(26, 79, 28, .22);
+    }
+
+    .forn-btn:hover {
+      background: var(--verde-mid);
+      transform: translateY(-2px);
+    }
+
+    .forn-btn-granel {
+      background: transparent;
+      color: var(--verde);
+      border: 2px solid var(--verde-mid);
+      box-shadow: none;
+    }
+
+    .forn-btn-granel:hover {
+      background: var(--verde-pale);
+    }
+
+    @media (max-width: 900px) {
+      .fornecimento-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .forn-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .fornecimento-grid {
+        grid-template-columns: 1fr;
+      }
+      .forn-card:last-child {
+        grid-column: auto;
+        max-width: none;
+      }
+      .fornecimento-section {
+        border-radius: 20px;
+        margin: 0 16px 60px;
+        padding: 50px 0;
+      }
+    }
+
     /* CTA */
     .cta-section {
       background: var(--verde);
@@ -1187,6 +1331,57 @@
     </div>
   </section>
 
+  <!-- FORMAS DE FORNECIMENTO -->
+  <section class="fornecimento-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Como Comprar</p>
+          <h2 class="section-title">Formas de<br>Fornecimento</h2>
+        </div>
+      </div>
+      <div class="fornecimento-grid">
+
+        <!-- Sacos 25kg -->
+        <div class="forn-card">
+          <img src="img-sacos.png" alt="Sacos de 25kg D'Areia Ambiental" class="forn-img">
+          <div class="forn-body">
+            <span class="forn-badge">🛍️ Varejo</span>
+            <div class="forn-titulo">Sacos de 25 kg</div>
+            <div class="forn-peso">25 kg / saco</div>
+            <p class="forn-desc">Embalagem prática para obras menores, pequenas construções e reformas. Fácil de manusear e armazenar, com qualidade garantida em cada saco.</p>
+            <a href="https://wa.me/5511973220218?text=Olá!%20Quero%20comprar%20Areia%20Classificada%20em%20sacos%20de%2025kg." class="forn-btn">Pedir via WhatsApp ↗</a>
+          </div>
+        </div>
+
+        <!-- Big Bag 1000kg -->
+        <div class="forn-card">
+          <img src="img-bigbag.png" alt="Big Bag 1000kg D'Areia Ambiental" class="forn-img">
+          <div class="forn-body">
+            <span class="forn-badge">📦 Atacado</span>
+            <div class="forn-titulo">Big Bag 1.000 kg</div>
+            <div class="forn-peso">1.000 kg / big bag</div>
+            <p class="forn-desc">Ideal para construtoras, empreiteiras e grandes obras. Volume que garante continuidade no canteiro com economia de escala e granulometria controlada.</p>
+            <a href="https://wa.me/5511973220218?text=Olá!%20Quero%20comprar%20Areia%20Classificada%20em%20Big%20Bag%20de%201000kg." class="forn-btn">Pedir via WhatsApp ↗</a>
+          </div>
+        </div>
+
+        <!-- A Granel -->
+        <div class="forn-card">
+          <img src="img-producao.png" alt="Areia Classificada a granel D'Areia Ambiental" class="forn-img">
+          <div class="forn-body">
+            <span class="forn-badge">🚛 Frete</span>
+            <div class="forn-titulo">A Granel</div>
+            <div class="forn-peso">Volume sob consulta</div>
+            <p class="forn-desc">Fornecimento a granel com frete dedicado para grandes volumes. Orçamento personalizado conforme destino e quantidade. Entre em contato e solicite sua cotação.</p>
+            <a href="https://wa.me/5511973220218?text=Olá!%20Quero%20um%20orçamento%20para%20Areia%20Classificada%20a%20granel%20com%20frete." class="forn-btn forn-btn-granel">💬 Solicitar Orçamento</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <div class="container">
     <div class="cta-section">
@@ -1341,4 +1536,3 @@
 </body>
 
 </html>
-
