@@ -33,6 +33,8 @@
             --wpp-dark: #128C7E;
             --insta: #E1306C;
             --insta-dark: #C13584;
+            --face: #1877F2;
+            --face-dark: #0E5FCB;
         }
 
         html { scroll-behavior: smooth; }
@@ -51,8 +53,8 @@
             inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
             pointer-events: none;
-            z-index: 9999;
-            opacity: .6;
+            z-index: 1;
+            opacity: .4;
         }
 
         /* ── HEADER ── */
@@ -354,6 +356,7 @@
         .info-block:nth-child(2) { animation-delay: .35s; }
         .info-block:nth-child(3) { animation-delay: .5s; }
         .info-block:nth-child(4) { animation-delay: .65s; }
+        .info-block:nth-child(5) { animation-delay: .8s; }
 
         @keyframes slideIn {
             to { opacity: 1; transform: translateX(0); }
@@ -373,19 +376,21 @@
             margin-top: 2px;
         }
 
-        /* WhatsApp icon override */
         .info-icon.wpp-icon {
             background: rgba(37, 211, 102, .18);
             border-color: rgba(37, 211, 102, .3);
         }
 
-        /* Instagram icon override */
         .info-icon.insta-icon {
             background: rgba(225, 48, 108, .15);
             border-color: rgba(225, 48, 108, .28);
         }
 
-        /* Instagram pill button */
+        .info-icon.face-icon {
+            background: rgba(24, 119, 242, .16);
+            border-color: rgba(24, 119, 242, .3);
+        }
+
         .btn-insta-pill {
             display: inline-flex;
             align-items: center;
@@ -411,6 +416,31 @@
 
         .btn-insta-pill svg { flex-shrink: 0; }
 
+        .btn-face-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--face);
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px 5px 8px;
+            border-radius: 50px;
+            transition: background .2s, transform .15s, box-shadow .2s;
+            box-shadow: 0 3px 12px rgba(24,119,242,.35);
+            white-space: nowrap;
+            letter-spacing: .2px;
+        }
+
+        .btn-face-pill:hover {
+            background: var(--face-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(24,119,242,.45);
+        }
+
+        .btn-face-pill svg { flex-shrink: 0; }
+
         .info-text {
             display: flex;
             flex-direction: column;
@@ -427,7 +457,6 @@
             margin-bottom: 2px;
         }
 
-        /* WhatsApp clickable row */
         .wpp-row {
             display: flex;
             align-items: center;
@@ -448,7 +477,6 @@
             margin-top: 2px;
         }
 
-        /* WhatsApp pill button */
         .btn-wpp-pill {
             display: inline-flex;
             align-items: center;
@@ -472,11 +500,8 @@
             box-shadow: 0 6px 18px rgba(37,211,102,.45);
         }
 
-        .btn-wpp-pill svg {
-            flex-shrink: 0;
-        }
+        .btn-wpp-pill svg { flex-shrink: 0; }
 
-        /* Maps button */
         .btn-maps {
             display: inline-flex;
             align-items: center;
@@ -494,9 +519,7 @@
             width: fit-content;
         }
 
-        .btn-maps:hover {
-            background: rgba(255,255,255,.2);
-        }
+        .btn-maps:hover { background: rgba(255,255,255,.2); }
 
         /* ── DIREITA — FORM ── */
         .hero-right {
@@ -507,9 +530,7 @@
             justify-content: center;
         }
 
-        .form-header {
-            margin-bottom: 36px;
-        }
+        .form-header { margin-bottom: 36px; }
 
         .form-eyebrow {
             font-size: 11px;
@@ -634,7 +655,6 @@
         .btn-submit svg { transition: transform .25s; }
         .btn-submit:hover svg { transform: translateX(4px); }
 
-        /* WhatsApp inline link in form */
         .btn-wpp-inline {
             display: inline-flex;
             align-items: center;
@@ -655,7 +675,6 @@
 
         .btn-wpp-inline .wpp-svg { color: var(--wpp); }
 
-        /* Success state */
         .form-success {
             display: none;
             flex-direction: column;
@@ -820,105 +839,48 @@
         }
 
         @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
             nav {
-                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(249,246,240,0.99);
+                backdrop-filter: blur(20px);
+                padding: 90px 28px 40px;
+                gap: 0;
+                z-index: 9000;
+                overflow-y: auto;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: var(--creme);
-                border-bottom: 1px solid var(--creme-dark);
-                padding: 20px;
-                z-index: 300;
-                box-shadow: 0 8px 30px rgba(0,0,0,.08);
+                justify-content: flex-start;
+                display: none;
             }
 
             nav.show { display: flex; }
 
-            nav a {
-                padding: 12px 0;
+            nav > a {
+                font-size: 18px;
+                font-weight: 600;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(106,158,110,.18);
+                color: #1a4a1e;
                 width: 100%;
-                border-bottom: 1px solid var(--creme-dark);
+                display: block;
+                letter-spacing: 0;
+                text-decoration: none;
             }
 
-            .hamburger { display: flex; }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                border: none;
-                border-radius: 0;
-                padding: 0 0 0 16px;
-                display: none;
+            nav > a:last-child {
+                border-bottom: none;
+                margin-top: 12px;
             }
 
-            .dropdown-menu::before { display: none; }
-            .dropdown.open .dropdown-menu { display: block; }
-
-            .dropdown-menu a {
-                padding: 8px 8px !important;
-                font-size: 14px !important;
-                border-bottom: 1px solid var(--creme-dark) !important;
-            }
-
-            .strip-inner { flex-direction: column; align-items: flex-start; }
-            .footer-top  { flex-direction: column; gap: 32px; }
-            .footer-nav  { flex-direction: column; gap: 12px; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-left,
-            .hero-right { padding: 48px 24px; }
-        }
-
-        /* ── MOBILE MENU FIX ── */
-        @media (max-width: 768px) {
-            .hamburger { display: flex !important; }
-
-            nav#menu, nav.menu {
-                display: none !important;
-                flex-direction: column !important;
-                position: fixed !important;
-                top: 0 !important; left: 0 !important;
-                right: 0 !important; bottom: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
-                background: rgba(249,246,240,0.99) !important;
-                backdrop-filter: blur(20px) !important;
-                padding: 90px 28px 40px !important;
-                gap: 0 !important;
-                z-index: 9000 !important;
-                overflow-y: auto !important;
-                box-shadow: none !important;
-                align-items: flex-start !important;
-                justify-content: flex-start !important;
-            }
-
-            nav#menu.show, nav.menu.show { display: flex !important; }
-
-            nav#menu > a, nav.menu > a {
-                font-size: 18px !important;
-                font-weight: 600 !important;
-                padding: 16px 0 !important;
-                border-bottom: 1px solid rgba(106,158,110,.18) !important;
-                color: #1a4a1e !important;
-                width: 100% !important;
-                display: block !important;
-                letter-spacing: 0 !important;
-                text-decoration: none !important;
-            }
-
-            nav#menu > a:last-child, nav.menu > a:last-child {
-                border-bottom: none !important;
-                margin-top: 12px !important;
-            }
-
-            nav#menu .nav-cta, nav.menu .nav-cta {
+            nav .nav-cta {
                 background: #1a4a1e !important;
                 color: #fff !important;
                 border-radius: 50px !important;
@@ -932,70 +894,63 @@
                 box-sizing: border-box !important;
             }
 
-            nav#menu .dropdown, nav.menu .dropdown {
-                width: 100% !important;
-                border-bottom: 1px solid rgba(106,158,110,.18) !important;
+            nav .dropdown {
+                width: 100%;
+                border-bottom: 1px solid rgba(106,158,110,.18);
             }
 
-            nav#menu .dropdown > a, nav.menu .dropdown > a {
-                font-size: 18px !important;
-                font-weight: 600 !important;
-                padding: 16px 0 !important;
-                color: #1a4a1e !important;
-                width: 100% !important;
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                border-bottom: none !important;
-                text-decoration: none !important;
+            nav .dropdown > a {
+                font-size: 18px;
+                font-weight: 600;
+                padding: 16px 0;
+                color: #1a4a1e;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: none;
+                text-decoration: none;
             }
 
-            nav#menu .dropdown-menu, nav.menu .dropdown-menu {
-                position: static !important;
-                display: none !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                transform: none !important;
-                box-shadow: none !important;
-                border: none !important;
-                border-radius: 0 !important;
-                padding: 0 0 8px 16px !important;
-                min-width: auto !important;
-                width: 100% !important;
-                background: transparent !important;
-                left: auto !important;
-                top: auto !important;
+            nav .dropdown-menu {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0 0 8px 16px;
+                min-width: auto;
+                width: 100%;
+                background: transparent;
+                left: auto;
+                top: auto;
             }
 
-            nav#menu .dropdown-menu::before, nav.menu .dropdown-menu::before { display: none !important; }
+            nav .dropdown-menu::before { display: none; }
 
-            nav#menu .dropdown.open .dropdown-menu,
-            nav.menu .dropdown.open .dropdown-menu { display: block !important; }
+            nav .dropdown.open .dropdown-menu { display: block; }
 
-            nav#menu .dropdown-menu a, nav.menu .dropdown-menu a {
-                font-size: 15px !important;
-                font-weight: 500 !important;
-                padding: 12px 8px !important;
-                color: #2e7d32 !important;
-                border-bottom: 1px solid rgba(106,158,110,.12) !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 8px !important;
-                text-decoration: none !important;
-                width: 100% !important;
-                white-space: normal !important;
+            nav .dropdown-menu a {
+                font-size: 15px;
+                font-weight: 500;
+                padding: 12px 8px;
+                color: #2e7d32;
+                border-bottom: 1px solid rgba(106,158,110,.12);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                width: 100%;
+                white-space: normal;
             }
 
-            nav#menu .dropdown-menu a:last-child,
-            nav.menu .dropdown-menu a:last-child { border-bottom: none !important; }
+            nav .dropdown-menu a:last-child { border-bottom: none; }
 
-            nav#menu .dropdown.open .dropdown-chevron,
-            nav.menu .dropdown.open .dropdown-chevron { transform: rotate(180deg) !important; }
-        }
+            nav .dropdown.open .dropdown-chevron { transform: rotate(180deg); }
 
-        .menu-close-btn { display: none; }
-
-        @media (max-width: 768px) {
             .menu-close-btn {
                 display: flex;
                 position: absolute;
@@ -1014,6 +969,15 @@
                 z-index: 9001;
                 flex-shrink: 0;
             }
+
+            .strip-inner { flex-direction: column; align-items: flex-start; }
+            .footer-top  { flex-direction: column; gap: 32px; }
+            .footer-nav  { flex-direction: column; gap: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-left,
+            .hero-right { padding: 48px 24px; }
         }
 
         /* ── FLOATING WhatsApp button ── */
@@ -1072,7 +1036,7 @@
                 <nav id="menu">
                     <a href="index.html">Início</a>
                     <div class="dropdown" id="dropdownProdutos">
-                        <a href="#" onclick="toggleDropdownProdutos(event)">Produtos <span class="dropdown-chevron">▼</span></a>
+                        <a href="#" onclick="toggleDropdownById(event, 'dropdownProdutos')">Produtos <span class="dropdown-chevron">▼</span></a>
                         <div class="dropdown-menu">
                             <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
                             <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
@@ -1081,7 +1045,7 @@
                         </div>
                     </div>
                     <div class="dropdown" id="dropdownServicos">
-                        <a href="#" onclick="toggleDropdownServicos(event)">Areia p/ Serviços <span class="dropdown-chevron">▼</span></a>
+                        <a href="#" onclick="toggleDropdownById(event, 'dropdownServicos')">Areia p/ Serviços <span class="dropdown-chevron">▼</span></a>
                         <div class="dropdown-menu">
                             <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
                             <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
@@ -1112,7 +1076,6 @@
                 <!-- WhatsApp -->
                 <div class="info-block">
                     <div class="info-icon wpp-icon">
-                        <!-- SVG oficial WhatsApp -->
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                         </svg>
@@ -1151,6 +1114,28 @@
                             </a>
                         </div>
                         <span class="info-sub">Siga-nos para novidades</span>
+                    </div>
+                </div>
+
+                <!-- Facebook -->
+                <div class="info-block">
+                    <div class="info-icon face-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <span class="info-label">Facebook</span>
+                        <div class="wpp-row">
+                            <span class="info-value">D'Areia Ambiental</span>
+                            <a href="https://www.facebook.com/D.Areia.Descalvado" target="_blank" class="btn-face-pill" aria-label="Ver no Facebook">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                Ver página
+                            </a>
+                        </div>
+                        <span class="info-sub">Curta e acompanhe nossas novidades</span>
                     </div>
                 </div>
 
@@ -1281,7 +1266,7 @@
                 <nav class="footer-nav">
                     <a href="index.html">Início</a>
                     <div class="dropdown" id="dropdownProdutosFooter">
-                        <a href="#" onclick="toggleDropdownProdutosFooter(event)">Produtos ▾</a>
+                        <a href="#" onclick="toggleDropdownById(event, 'dropdownProdutosFooter')">Produtos ▾</a>
                         <div class="dropdown-menu">
                             <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
                             <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
@@ -1290,7 +1275,7 @@
                         </div>
                     </div>
                     <div class="dropdown" id="dropdownServicosFooter">
-                        <a href="#" onclick="toggleDropdownServicosFooter(event)">Areia p/ Serviços ▾</a>
+                        <a href="#" onclick="toggleDropdownById(event, 'dropdownServicosFooter')">Areia p/ Serviços ▾</a>
                         <div class="dropdown-menu">
                             <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
                             <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
@@ -1318,96 +1303,34 @@
     </a>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('show');
-            document.getElementById('hamburger').classList.toggle('ativo');
-        }
-        function toggleDropdownProdutos(e) { e.preventDefault(); document.getElementById('dropdownProdutos')?.classList.toggle('open'); }
-        function toggleDropdownServicos(e) { e.preventDefault(); document.getElementById('dropdownServicos')?.classList.toggle('open'); }
-        function toggleDropdownProdutosFooter(e) { e.preventDefault(); document.getElementById('dropdownProdutosFooter')?.classList.toggle('open'); }
-        function toggleDropdownServicosFooter(e) { e.preventDefault(); document.getElementById('dropdownServicosFooter')?.classList.toggle('open'); }
-
-        document.addEventListener('click', (e) => {
-            ['dropdownProdutos', 'dropdownServicos', 'dropdownProdutosFooter', 'dropdownServicosFooter'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el && !el.contains(e.target)) el.classList.remove('open');
-            });
-            const menu = document.getElementById('menu');
-            const btn  = document.getElementById('hamburger');
-            if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-                menu.classList.remove('show');
-                btn.classList.remove('ativo');
-            }
-        });
-
-        function handleSubmit(e) {
-            e.preventDefault();
-            const nome     = document.getElementById('nome').value.trim();
-            const email    = document.getElementById('email').value.trim();
-            const mensagem = document.getElementById('mensagem').value.trim();
-            let valid = true;
-
-            [['nome', nome], ['email', email], ['mensagem', mensagem]].forEach(([id, val]) => {
-                const el = document.getElementById(id);
-                if (!val) {
-                    el.style.borderColor = '#c0392b';
-                    el.addEventListener('input', () => el.style.borderColor = '', { once: true });
-                    valid = false;
-                }
-            });
-
-            if (!valid) return;
-
-            const btn = document.querySelector('.btn-submit');
-            btn.textContent = 'Enviando…';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                document.getElementById('formWrap').style.display = 'none';
-                const s = document.getElementById('formSuccess');
-                s.style.display = 'flex';
-            }, 900);
-        }
-    </script>
-
-    <script>
         (function () {
-            function getMenu() { return document.getElementById('menu'); }
-            function getHamburger() { return document.getElementById('hamburger'); }
+            var menu = document.getElementById('menu');
+            var hamburger = document.getElementById('hamburger');
 
             window.toggleMenu = function () {
-                var menu = getMenu(), btn = getHamburger();
-                if (!menu) return;
                 var isOpen = menu.classList.toggle('show');
-                if (btn) btn.classList.toggle('ativo', isOpen);
+                hamburger.classList.toggle('ativo', isOpen);
                 document.body.style.overflow = isOpen ? 'hidden' : '';
             };
 
             window.closeMenu = function () {
-                var menu = getMenu(), btn = getHamburger();
-                if (menu) menu.classList.remove('show');
-                if (btn) btn.classList.remove('ativo');
+                menu.classList.remove('show');
+                hamburger.classList.remove('ativo');
                 document.body.style.overflow = '';
             };
 
             window.toggleDropdownById = function (e, id) {
-                e.preventDefault(); e.stopPropagation();
+                e.preventDefault();
+                e.stopPropagation();
                 var el = document.getElementById(id);
                 if (!el) return;
-                document.querySelectorAll('.dropdown.open').forEach(d => { if (d !== el) d.classList.remove('open'); });
+                document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                    if (d !== el) d.classList.remove('open');
+                });
                 el.classList.toggle('open');
             };
 
-            window.toggleDropdown             = e => window.toggleDropdownById(e, 'dropdownProdutos');
-            window.toggleDropdownServicos     = e => window.toggleDropdownById(e, 'dropdownServicos');
-            window.toggleDropdownProdutos     = e => window.toggleDropdownById(e, 'dropdownProdutos');
-            window.toggleDropdownProdutosFooter = e => window.toggleDropdownById(e, 'dropdownProdutosFooter');
-            window.toggleDropdownServicosFooter = e => window.toggleDropdownById(e, 'dropdownServicosFooter');
-
             document.addEventListener('DOMContentLoaded', function () {
-                var menu = getMenu();
-                if (!menu) return;
-
                 if (!menu.querySelector('.menu-close-btn')) {
                     var closeBtn = document.createElement('button');
                     closeBtn.className = 'menu-close-btn';
@@ -1417,26 +1340,60 @@
                     menu.insertBefore(closeBtn, menu.firstChild);
                 }
 
-                menu.querySelectorAll(':scope > a').forEach(a => {
-                    a.addEventListener('click', () => {
+                menu.querySelectorAll(':scope > a').forEach(function (a) {
+                    a.addEventListener('click', function () {
                         if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
                         window.closeMenu();
                     });
                 });
 
-                menu.querySelectorAll('.dropdown-menu a').forEach(a => {
-                    a.addEventListener('click', () => window.closeMenu());
+                menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
+                    a.addEventListener('click', function () { window.closeMenu(); });
                 });
             });
 
-            document.addEventListener('click', e => {
-                var menu = getMenu(), btn = getHamburger();
-                if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) window.closeMenu();
-                document.querySelectorAll('.dropdown.open').forEach(d => { if (!d.contains(e.target)) d.classList.remove('open'); });
+            document.addEventListener('click', function (e) {
+                if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+                    window.closeMenu();
+                }
+                document.querySelectorAll('.dropdown.open').forEach(function (d) {
+                    if (!d.contains(e.target)) d.classList.remove('open');
+                });
             });
 
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeMenu(); });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') window.closeMenu();
+            });
         })();
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var mensagem = document.getElementById('mensagem').value.trim();
+            var valid = true;
+
+            [['nome', nome], ['email', email], ['mensagem', mensagem]].forEach(function (pair) {
+                var el = document.getElementById(pair[0]);
+                if (!pair[1]) {
+                    el.style.borderColor = '#c0392b';
+                    el.addEventListener('input', function () { el.style.borderColor = ''; }, { once: true });
+                    valid = false;
+                }
+            });
+
+            if (!valid) return;
+
+            var btn = document.querySelector('.btn-submit');
+            btn.textContent = 'Enviando…';
+            btn.disabled = true;
+
+            setTimeout(function () {
+                document.getElementById('formWrap').style.display = 'none';
+                var s = document.getElementById('formSuccess');
+                s.style.display = 'flex';
+            }, 900);
+        }
     </script>
 
 </body>
