@@ -838,29 +838,47 @@
             .form-grid  { grid-template-columns: 1fr; }
         }
 
-      @media (max-width: 768px) {
-    .hamburger { display: flex; }
+   @media (max-width: 768px) {
+    /* Exibe o menu em formato de lista simples vertical para não quebrar a tela */
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem 0;
+    }
 
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(249,246,240,0.99);
-        backdrop-filter: blur(20px);
-        padding: 90px 28px 40px;
-        gap: 0;
-        z-index: 9000;
-        overflow-y: auto;
+    .nav-container {
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
+    }
+
+    /* Remove o efeito de hover flutuante que quebra no touch */
+    .nav-item:hover .dropdown {
+        position: relative;
+        transform: none;
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 1rem;
+    }
+
+    /* Corrige o grid para empilhar o conteúdo corretamente no mobile */
+    .contact-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+
+    .form-side {
+        padding: 1.5rem;
     }
 }
-
             nav.show { display: flex; }
 
             nav > a {
