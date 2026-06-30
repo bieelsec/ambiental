@@ -863,28 +863,19 @@
 
             nav.show { display: flex; }
 
-            /* FIX: scoped to #menu and !important so this always wins over
-               the desktop "nav a" / "nav a.ativo" rules regardless of
-               specificity ties — this is what made "Início" and "Contato"
-               render invisible (gray/green-on-cream low contrast) on mobile. */
-            nav#menu > a {
-                font-size: 18px !important;
-                font-weight: 600 !important;
-                padding: 16px 0 !important;
+            nav > a {
+                font-size: 18px;
+                font-weight: 600;
+                padding: 16px 0;
                 border-bottom: 1px solid rgba(106,158,110,.18);
-                color: #1a4a1e !important;
+                color: #1a4a1e;
                 width: 100%;
                 display: block;
                 letter-spacing: 0;
                 text-decoration: none;
             }
 
-            nav#menu > a.ativo {
-                color: #1a4a1e !important;
-                font-weight: 700 !important;
-            }
-
-            nav#menu > a:last-child {
+            nav > a:last-child {
                 border-bottom: none;
                 margin-top: 12px;
             }
