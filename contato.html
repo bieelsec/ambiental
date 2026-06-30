@@ -1,1400 +1,594 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato | D'Areia Ambiental</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <title>Contato - D'Areia Ambiental</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
+        :root {
+            --primary: #2C5E3B;
+            --primary-light: #4A8B5C;
+            --secondary: #D4A373;
+            --accent: #E9D8A6;
+            --dark: #1F2937;
+            --light: #F9FAF9;
+            --cream: #F4F1DE;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
         }
-
-        :root {
-            --verde: #1a4f1c;
-            --verde-mid: #2e7d32;
-            --verde-soft: #4a9e4e;
-            --verde-pale: #e8f5e9;
-            --creme: #f9f6f0;
-            --creme-dark: #ede8df;
-            --areia: #c9b99a;
-            --areia-light: #f0e8d8;
-            --texto: #1a1a18;
-            --muted: #6b6b60;
-            --branco: #ffffff;
-            --wpp: #25D366;
-            --wpp-dark: #128C7E;
-            --insta: #E1306C;
-            --insta-dark: #C13584;
-            --face: #1877F2;
-            --face-dark: #0E5FCB;
-        }
-
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--creme);
-            color: var(--texto);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1;
-            opacity: .4;
-        }
-
-        /* ── HEADER ── */
+        /* HEADER & NAVIGATION */
         header {
-            position: sticky;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
-            background: rgba(249, 246, 240, .94);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--creme-dark);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        .container {
-            width: 92%;
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .navbar {
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
-            position: relative;
         }
 
         .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
+            gap: 0.5rem;
         }
 
-        .logo-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: var(--verde-pale);
-            border: 2px solid var(--verde-pale);
-            object-fit: cover;
+        .logo i {
+            color: var(--secondary);
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 6px;
-            border-radius: 8px;
-            background: none;
-            border: none;
-            z-index: 200;
-        }
-
-        .hamburger:hover { background: var(--verde-pale); }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 2.5px;
-            background: var(--verde);
-            border-radius: 3px;
-            transition: transform .3s, opacity .3s;
-            transform-origin: center;
-        }
-
-        .hamburger.ativo span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-        .hamburger.ativo span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-        .hamburger.ativo span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-
-        nav {
+        .nav-menu {
             display: flex;
+            gap: 2rem;
+            list-style: none;
             align-items: center;
-            gap: 36px;
         }
 
-        nav a {
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
             text-decoration: none;
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: .3px;
-            transition: color .2s;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
         }
 
-        nav a:hover { color: var(--verde); }
-        nav a.ativo { color: var(--verde); font-weight: 700; }
-
-        .nav-cta {
-            background: var(--verde) !important;
-            color: var(--branco) !important;
-            padding: 10px 22px;
-            border-radius: 50px;
-            font-size: 13px !important;
-            transition: background .2s, transform .15s !important;
+        .nav-link:hover {
+            color: var(--primary);
         }
 
-        .nav-cta:hover {
-            background: var(--verde-mid) !important;
-            transform: translateY(-1px);
-        }
-
-        /* DROPDOWN */
-        .dropdown { position: relative; }
-        .dropdown>a { cursor: pointer; }
-
-        .dropdown-menu {
+        /* Dropdown Styles */
+        .dropdown {
             position: absolute;
-            top: calc(100% + 12px);
+            top: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(8px);
-            background: var(--branco);
-            border: 1px solid var(--creme-dark);
-            border-radius: 16px;
-            padding: 10px 0;
-            min-width: 220px;
-            box-shadow: 0 12px 40px rgba(26,79,28,.12);
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            min-width: 240px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 1rem 0;
             opacity: 0;
             visibility: hidden;
-            transition: opacity .25s, visibility .25s, transform .25s;
-            z-index: 200;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary);
         }
 
-        .dropdown-menu::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 8px;
-            background: var(--branco);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .dropdown:hover .dropdown-menu,
-        .dropdown.open .dropdown-menu {
+        .nav-item:hover .dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
         }
 
-        .dropdown-menu a {
+        .dropdown-item {
+            padding: 0.75rem 1.5rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            font-size: 13px !important;
+            gap: 1rem;
+            color: var(--dark);
+            text-decoration: none;
             font-weight: 500;
-            color: var(--muted) !important;
-            transition: background .15s, color .15s;
-            white-space: nowrap;
+            transition: var(--transition);
         }
 
-        .dropdown-menu a:hover {
-            background: var(--verde-pale);
-            color: var(--verde) !important;
+        .dropdown-item:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            padding-left: 1.75rem;
         }
 
-        .dropdown-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--areia);
-            flex-shrink: 0;
-            transition: background .15s;
+        .dropdown-item i {
+            color: var(--secondary);
+            width: 20px;
         }
 
-        .dropdown-menu a:hover .dropdown-dot { background: var(--verde-mid); }
-
-        .dropdown-chevron {
-            font-size: 10px;
-            margin-left: 2px;
-            transition: transform .25s;
+        /* Menu Hambúrguer (Mobile) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
         }
 
-        .dropdown:hover .dropdown-chevron { transform: rotate(180deg); }
-
-        /* ── HERO SPLIT ── */
-        .hero-contact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: calc(100vh - 127px);
-        }
-
-        /* ── ESQUERDA ── */
-        .hero-left {
-            background: var(--verde);
-            padding: 80px 64px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* HERO SECTION */
+        .contact-hero {
+            background: linear-gradient(135deg, #E6ECE8 0%, #F4F1DE 100%);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-left::before {
-            content: '';
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.07);
-            top: -170px;
-            right: -190px;
-            pointer-events: none;
-        }
-
-        .hero-left::after {
-            content: '';
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.05);
-            bottom: -110px;
-            left: -90px;
-            pointer-events: none;
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,.1);
-            border: 1px solid rgba(255,255,255,.18);
-            color: rgba(255,255,255,.85);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            padding: 8px 16px;
-            border-radius: 50px;
-            width: fit-content;
-            margin-bottom: 36px;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--areia);
-            flex-shrink: 0;
-        }
-
-        .hero-left h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(44px, 4.5vw, 68px);
-            font-weight: 900;
-            line-height: 1.0;
-            color: var(--branco);
-            margin-bottom: 28px;
-            letter-spacing: -1px;
-        }
-
-        .hero-left h1 em {
-            font-style: italic;
-            color: var(--areia);
-        }
-
-        .hero-left > p {
-            font-size: 17px;
-            color: rgba(255,255,255,.7);
-            line-height: 1.8;
-            max-width: 400px;
-            font-weight: 300;
-            margin-bottom: 52px;
-        }
-
-        .info-blocks {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .info-block {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            padding: 20px 0;
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn .6s ease forwards;
-            position: relative;
-        }
-
-        .info-block:not(:last-child)::after {
+        .contact-hero::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(255,255,255,.09);
-        }
-
-        .info-block:nth-child(1) { animation-delay: .2s; }
-        .info-block:nth-child(2) { animation-delay: .35s; }
-        .info-block:nth-child(3) { animation-delay: .5s; }
-        .info-block:nth-child(4) { animation-delay: .65s; }
-        .info-block:nth-child(5) { animation-delay: .8s; }
-
-        @keyframes slideIn {
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
-            background: rgba(255,255,255,.1);
-            border: 1px solid rgba(255,255,255,.14);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-top: 2px;
-        }
-
-        .info-icon.wpp-icon {
-            background: rgba(37, 211, 102, .18);
-            border-color: rgba(37, 211, 102, .3);
-        }
-
-        .info-icon.insta-icon {
-            background: rgba(225, 48, 108, .15);
-            border-color: rgba(225, 48, 108, .28);
-        }
-
-        .info-icon.face-icon {
-            background: rgba(24, 119, 242, .16);
-            border-color: rgba(24, 119, 242, .3);
-        }
-
-        .btn-insta-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--insta);
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px 5px 8px;
-            border-radius: 50px;
-            transition: background .2s, transform .15s, box-shadow .2s;
-            box-shadow: 0 3px 12px rgba(225,48,108,.35);
-            white-space: nowrap;
-            letter-spacing: .2px;
-        }
-
-        .btn-insta-pill:hover {
-            background: var(--insta-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(225,48,108,.45);
-        }
-
-        .btn-insta-pill svg { flex-shrink: 0; }
-
-        .btn-face-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--face);
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px 5px 8px;
-            border-radius: 50px;
-            transition: background .2s, transform .15s, box-shadow .2s;
-            box-shadow: 0 3px 12px rgba(24,119,242,.35);
-            white-space: nowrap;
-            letter-spacing: .2px;
-        }
-
-        .btn-face-pill:hover {
-            background: var(--face-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(24,119,242,.45);
-        }
-
-        .btn-face-pill svg { flex-shrink: 0; }
-
-        .info-text {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            flex: 1;
-        }
-
-        .info-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--areia);
-            margin-bottom: 2px;
-        }
-
-        .wpp-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .info-value {
-            font-size: 15px;
-            color: var(--branco);
-            font-weight: 500;
-            line-height: 1.5;
-        }
-
-        .info-sub {
-            font-size: 12px;
-            color: rgba(255,255,255,.5);
-            margin-top: 2px;
-        }
-
-        .btn-wpp-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--wpp);
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px 5px 8px;
-            border-radius: 50px;
-            transition: background .2s, transform .15s, box-shadow .2s;
-            box-shadow: 0 3px 12px rgba(37,211,102,.35);
-            white-space: nowrap;
-            letter-spacing: .2px;
-        }
-
-        .btn-wpp-pill:hover {
-            background: var(--wpp-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37,211,102,.45);
-        }
-
-        .btn-wpp-pill svg { flex-shrink: 0; }
-
-        .btn-maps {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,.12);
-            border: 1px solid rgba(255,255,255,.2);
-            color: rgba(255,255,255,.9);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 5px 12px;
-            border-radius: 50px;
-            margin-top: 8px;
-            transition: background .2s;
-            width: fit-content;
-        }
-
-        .btn-maps:hover { background: rgba(255,255,255,.2); }
-
-        /* ── DIREITA — FORM ── */
-        .hero-right {
-            background: var(--creme);
-            padding: 80px 64px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .form-header { margin-bottom: 36px; }
-
-        .form-eyebrow {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--areia);
-            margin-bottom: 12px;
-        }
-
-        .form-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 2.5vw, 38px);
-            font-weight: 900;
-            color: var(--verde);
-            line-height: 1.1;
-            letter-spacing: -.5px;
-        }
-
-        .form-header p {
-            margin-top: 12px;
-            font-size: 15px;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .form-full { grid-column: 1 / -1; }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .field label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .field input,
-        .field select,
-        .field textarea {
             width: 100%;
-            padding: 13px 16px;
-            background: var(--branco);
-            border: 1.5px solid var(--creme-dark);
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,186.7C960,192,1056,160,1152,144C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom no-repeat;
+            background-size: cover;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* MAIN CONTENT - SPLIT LAYOUT */
+        .contact-section {
+            max-width: 1200px;
+            margin: -3rem auto 6rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            background: white;
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* LEFT SIDE - INFO */
+        .info-side h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-side p {
+            color: #666;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--cream);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: white;
             border-radius: 12px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: var(--texto);
-            outline: none;
-            transition: border-color .25s, box-shadow .25s;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .field input:focus,
-        .field select:focus,
-        .field textarea:focus {
-            border-color: var(--verde-mid);
-            box-shadow: 0 0 0 3px rgba(46,125,50,.1);
-        }
-
-        .field input::placeholder,
-        .field textarea::placeholder { color: #b0b0a0; }
-
-        .field textarea {
-            resize: vertical;
-            min-height: 110px;
-            line-height: 1.6;
-        }
-
-        .field select {
-            cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b60' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 40px;
-        }
-
-        .form-submit {
-            margin-top: 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .card-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* RIGHT SIDE - FORM */
+        .form-side {
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid #E5E7EB;
+            background-color: white;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(44, 94, 59, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
         }
 
         .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--verde);
-            color: var(--branco);
-            padding: 15px 32px;
-            border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
             border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all .25s;
-            letter-spacing: .2px;
-            box-shadow: 0 8px 28px rgba(26,79,28,.25);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .btn-submit:hover {
-            background: var(--verde-mid);
+            background-color: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 14px 36px rgba(26,79,28,.32);
         }
 
-        .btn-submit svg { transition: transform .25s; }
-        .btn-submit:hover svg { transform: translateX(4px); }
-
-        .btn-wpp-inline {
-            display: inline-flex;
+        /* WHATSAPP BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
             text-decoration: none;
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 500;
-            padding: 10px 0;
-            border-bottom: 1.5px solid var(--creme-dark);
-            transition: color .2s, border-color .2s;
+            transition: var(--transition);
         }
 
-        .btn-wpp-inline:hover {
-            color: var(--wpp-dark);
-            border-color: #b7dfb9;
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
 
-        .btn-wpp-inline .wpp-svg { color: var(--wpp); }
-
-        .form-success {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            gap: 16px;
-            padding: 40px;
-            animation: fadeUp .5s ease;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .success-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: var(--verde-pale);
-            border: 2px solid #b7d9b8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
-
-        .form-success h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            color: var(--verde);
-            font-weight: 700;
-        }
-
-        .form-success p {
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.7;
-            max-width: 320px;
-        }
-
-        /* ── STRIP ── */
-        .strip {
-            background: var(--verde);
-            padding: 24px 0;
-        }
-
-        .strip-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .strip-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: rgba(255,255,255,.75);
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .strip-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--areia);
-            flex-shrink: 0;
-        }
-
-        /* ── FOOTER ── */
+        /* FOOTER */
         footer {
-            background: var(--verde);
-            border-top: 1px solid rgba(255,255,255,.08);
-            padding: 0;
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 56px 0 40px;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,.55);
-            font-size: 13px;
-            line-height: 1.7;
-            max-width: 260px;
-            margin-top: 10px;
-        }
-
-        .footer-brand strong {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--branco);
-            font-weight: 700;
-            display: block;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-            align-items: flex-start;
-        }
-
-        .footer-nav a {
-            color: rgba(255,255,255,.65);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color .2s;
-        }
-
-        .footer-nav a:hover { color: white; }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,.1);
-            padding: 22px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .footer-bottom p {
-            color: rgba(255,255,255,.4);
-            font-size: 12px;
-        }
-
-        .footer-eco {
-            color: rgba(255,255,255,.4);
-            font-size: 12px;
-        }
-
-        .footer-nav .dropdown-menu {
-            background: #2a5e2d;
-            border-color: rgba(255,255,255,.12);
-        }
-
-        .footer-nav .dropdown-menu a { color: rgba(255,255,255,.75) !important; }
-
-        .footer-nav .dropdown-menu a:hover {
-            background: rgba(255,255,255,.1);
-            color: white !important;
-        }
-
-        .footer-nav .dropdown-menu::before { background: #2a5e2d; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 960px) {
-            .hero-contact { grid-template-columns: 1fr; }
-            .hero-left  { padding: 60px 32px; }
-            .hero-right { padding: 60px 32px; }
-            .form-grid  { grid-template-columns: 1fr; }
+        /* RESPONSIVIDADE (MOBILE E TABLET) */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 2rem;
+            }
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
+            .menu-toggle {
+                display: block; /* Aparece o botão hambúrguer */
+            }
 
-            nav {
+            /* Correção do Menu Responsivo */
+            .nav-menu {
                 position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(249,246,240,0.99);
-                backdrop-filter: blur(20px);
-                padding: 90px 28px 40px;
-                gap: 0;
-                z-index: 9000;
-                overflow-y: auto;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
                 flex-direction: column;
                 align-items: flex-start;
-                justify-content: flex-start;
-                display: none;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                overflow-y: auto;
             }
 
-            nav.show { display: flex; }
+            .nav-menu.active {
+                left: 0; /* Faz o menu deslizar para a tela */
+            }
 
-            nav > a {
-                font-size: 18px;
-                font-weight: 600;
-                padding: 16px 0;
-                border-bottom: 1px solid rgba(106,158,110,.18);
-                color: #1a4a1e;
+            .nav-item {
                 width: 100%;
-                display: block;
-                letter-spacing: 0;
-                text-decoration: none;
             }
 
-            nav > a:last-child {
-                border-bottom: none;
-                margin-top: 12px;
-            }
-
-            nav .nav-cta {
-                background: #1a4a1e !important;
-                color: #fff !important;
-                border-radius: 50px !important;
-                padding: 16px 28px !important;
-                text-align: center !important;
-                width: 100% !important;
-                font-size: 15px !important;
-                font-weight: 700 !important;
-                margin-top: 8px !important;
-                display: block !important;
-                box-sizing: border-box !important;
-            }
-
-            nav .dropdown {
-                width: 100%;
-                border-bottom: 1px solid rgba(106,158,110,.18);
-            }
-
-            nav .dropdown > a {
-                font-size: 18px;
-                font-weight: 600;
-                padding: 16px 0;
-                color: #1a4a1e;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: none;
-                text-decoration: none;
-            }
-
-            nav .dropdown-menu {
-                position: static;
-                display: none;
-                opacity: 1;
-                visibility: visible;
+            /* Adaptação dos Dropdowns no Mobile */
+            .dropdown {
+                position: relative;
+                top: 0;
+                left: 0;
                 transform: none;
                 box-shadow: none;
-                border: none;
-                border-radius: 0;
-                padding: 0 0 8px 16px;
-                min-width: auto;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                padding: 0.5rem 0 0 1rem;
+                border-top: none;
+                border-left: 2px solid var(--primary);
                 width: 100%;
-                background: transparent;
-                left: auto;
-                top: auto;
             }
 
-            nav .dropdown-menu::before { display: none; }
-
-            nav .dropdown.open .dropdown-menu { display: block; }
-
-            nav .dropdown-menu a {
-                font-size: 15px;
-                font-weight: 500;
-                padding: 12px 8px;
-                color: #2e7d32;
-                border-bottom: 1px solid rgba(106,158,110,.12);
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                text-decoration: none;
-                width: 100%;
-                white-space: normal;
+            .nav-item.open .dropdown {
+                display: block;
             }
 
-            nav .dropdown-menu a:last-child { border-bottom: none; }
-
-            nav .dropdown.open .dropdown-chevron { transform: rotate(180deg); }
-
-            .menu-close-btn {
-                display: flex;
-                position: absolute;
-                top: 20px;
-                right: 24px;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: rgba(26,74,30,.08);
-                border: none;
-                cursor: pointer;
-                align-items: center;
-                justify-content: center;
-                font-size: 22px;
-                color: #1a4a1e;
-                z-index: 9001;
-                flex-shrink: 0;
+            .contact-hero {
+                padding: 8rem 1rem 4rem;
             }
 
-            .strip-inner { flex-direction: column; align-items: flex-start; }
-            .footer-top  { flex-direction: column; gap: 32px; }
-            .footer-nav  { flex-direction: column; gap: 12px; }
-        }
+            .contact-section {
+                margin-top: -1.5rem;
+                padding: 0 1rem;
+            }
 
-        @media (max-width: 480px) {
-            .hero-left,
-            .hero-right { padding: 48px 24px; }
-        }
-
-        /* ── FLOATING WhatsApp button ── */
-        .fab-wpp {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 58px;
-            height: 58px;
-            background: var(--wpp);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 24px rgba(37,211,102,.45);
-            z-index: 500;
-            text-decoration: none;
-            transition: transform .2s, box-shadow .2s;
-        }
-
-        .fab-wpp:hover {
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 10px 32px rgba(37,211,102,.55);
-        }
-
-        .fab-wpp::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: var(--wpp);
-            animation: pulse-wpp 2.4s ease-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes pulse-wpp {
-            0%   { transform: scale(1); opacity: .6; }
-            70%  { transform: scale(1.55); opacity: 0; }
-            100% { transform: scale(1.55); opacity: 0; }
+            .form-side {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- HEADER -->
+    <!-- CABEÇALHO -->
     <header>
-        <div class="container">
-            <div class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="33.png" alt="D'Areia Ambiental" class="logo-img">
-                </a>
-                <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
-                    <span></span><span></span><span></span>
-                </button>
-                <nav id="menu">
-                    <a href="index.html">Início</a>
-                    <div class="dropdown" id="dropdownProdutos">
-                        <a href="#" onclick="toggleDropdownById(event, 'dropdownProdutos')">Produtos <span class="dropdown-chevron">▼</span></a>
-                        <div class="dropdown-menu">
-                            <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
-                            <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
-                            <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
-                            <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
-                        </div>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-seedling"></i> D'Areia Ambiental
+            </a>
+            
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Produtos <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-cubes"></i> Areia Quartzosa</a>
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-filter"></i> Areia Filtrante</a>
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-建"></i> Areia Industrial</a>
                     </div>
-                    <div class="dropdown" id="dropdownServicos">
-                        <a href="#" onclick="toggleDropdownById(event, 'dropdownServicos')">Areia p/ Serviços <span class="dropdown-chevron">▼</span></a>
-                        <div class="dropdown-menu">
-                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
-                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
-                            <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
-                            <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
-                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
-                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp; Decoração</a>
-                        </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Serviços <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-truck-moving"></i> Logística Ambiental</a>
+                        <a href="#" class="dropdown-item"><i class="fa-solid fa-recycle"></i> Tratamento de Resíduos</a>
                     </div>
-                    <a href="contato.html" class="ativo">Contato</a>
-                    <a href="https://wa.me/5511973220218" class="nav-cta">Solicitar Orçamento</a>
-                </nav>
-            </div>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Sobre Nós</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" style="color: var(--primary);">Contato</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- HERO SPLIT -->
-    <section class="hero-contact">
+    <!-- SEÇÃO HERO -->
+    <section class="contact-hero">
+        <span class="hero-badge">Fale Conosco</span>
+        <h1>Vamos Conversar?</h1>
+        <p>Tem alguma dúvida sobre nossos produtos ou precisa de um orçamento personalizado? Nossa equipe de especialistas está pronta para ajudar.</p>
+    </section>
 
-        <!-- ESQUERDA — INFO -->
-        <div class="hero-left">
-            <div class="hero-eyebrow">Fale Conosco</div>
-            <h1>Vamos<br>trabalhar<br><em>juntos</em></h1>
-            <p>Estamos prontos para atender orçamentos, tirar dúvidas e orientar cada projeto com atenção e agilidade.</p>
-
-            <div class="info-blocks">
-
-                <!-- WhatsApp -->
-                <div class="info-block">
-                    <div class="info-icon wpp-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                    </div>
-                    <div class="info-text">
-                        <span class="info-label">WhatsApp</span>
-                        <div class="wpp-row">
-                            <span class="info-value">(11) 97322-0218</span>
-                            <a href="https://wa.me/5511973220218" target="_blank" class="btn-wpp-pill" aria-label="Chamar no WhatsApp">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                                Chamar agora
-                            </a>
+    <!-- CONTEÚDO PRINCIPAL (FORMULÁRIO E CONTATOS) -->
+    <main class="contact-section">
+        <div class="contact-container">
+            
+            <!-- Lado Esquerdo: Informações -->
+            <div class="info-side">
+                <h2>Canais de Atendimento</h2>
+                <p>Escolha a forma mais confortável para você entrar em contato. Respondemos rápido!</p>
+                
+                <div class="contact-cards">
+                    <div class="info-card">
+                        <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                        <div class="card-content">
+                            <h3>Telefone</h3>
+                            <p>+55 (11) 4002-8922</p>
                         </div>
-                        <span class="info-sub">Seg – Sex, 08h às 18h</span>
                     </div>
-                </div>
-
-                <!-- Instagram -->
-                <div class="info-block">
-                    <div class="info-icon insta-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E1306C" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                        </svg>
-                    </div>
-                    <div class="info-text">
-                        <span class="info-label">Instagram</span>
-                        <div class="wpp-row">
-                            <span class="info-value">@d.areia.ambiental</span>
-                            <a href="https://www.instagram.com/d.areia.ambiental/" target="_blank" class="btn-insta-pill" aria-label="Ver no Instagram">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                                </svg>
-                                Ver perfil
-                            </a>
+                    <div class="info-card">
+                        <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="card-content">
+                            <h3>E-mail</h3>
+                            <p>contato@dareiaambiental.com.br</p>
                         </div>
-                        <span class="info-sub">Siga-nos para novidades</span>
                     </div>
-                </div>
-
-                <!-- Facebook -->
-                <div class="info-block">
-                    <div class="info-icon face-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </div>
-                    <div class="info-text">
-                        <span class="info-label">Facebook</span>
-                        <div class="wpp-row">
-                            <span class="info-value">D'Areia Ambiental</span>
-                            <a href="https://www.facebook.com/D.Areia.Descalvado" target="_blank" class="btn-face-pill" aria-label="Ver no Facebook">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                                Ver página
-                            </a>
+                    <div class="info-card">
+                        <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="card-content">
+                            <h3>Endereço</h3>
+                            <p>Av. Paulista, 1000 - São Paulo, SP</p>
                         </div>
-                        <span class="info-sub">Curta e acompanhe nossas novidades</span>
                     </div>
                 </div>
-
-                <!-- E-mail -->
-                <div class="info-block">
-                    <div class="info-icon">✉️</div>
-                    <div class="info-text">
-                        <span class="info-label">E-mail</span>
-                        <span class="info-value">areiasdescal@hotmail.com</span>
-                        <span class="info-sub">Resposta em até 24h úteis</span>
-                    </div>
-                </div>
-
-                <!-- Localização -->
-                <div class="info-block">
-                    <div class="info-icon">📍</div>
-                    <div class="info-text">
-                        <span class="info-label">Localização</span>
-                        <span class="info-value">Descalvado — SP, Brasil</span>
-                        <span class="info-sub">Entregas em toda a Região</span>
-                        <a href="https://maps.app.goo.gl/3JoSy5QWcQHY1kJR8" target="_blank" class="btn-maps">
-                            📍 Ver no Maps
-                        </a>
-                    </div>
-                </div>
-
             </div>
-        </div>
 
-        <!-- DIREITA — FORMULÁRIO -->
-        <div class="hero-right">
-            <div id="formWrap">
-                <div class="form-header">
-                    <p class="form-eyebrow">Enviar Mensagem</p>
-                    <h2>Como podemos<br>te ajudar?</h2>
-                    <p>Preencha o formulário e retornaremos o mais breve possível.</p>
-                </div>
-
-                <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-                    <div class="form-grid">
-                        <div class="field">
-                            <label for="nome">Nome completo</label>
-                            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-                        </div>
-                        <div class="field">
-                            <label for="empresa">Empresa (opcional)</label>
-                            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
-                        </div>
-                        <div class="field">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                        </div>
-                        <div class="field">
-                            <label for="telefone">Telefone / WhatsApp</label>
-                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-                        </div>
-                        <div class="field form-full">
-                            <label for="assunto">Assunto</label>
-                            <select id="assunto" name="assunto">
-                                <option value="" disabled selected>Selecione um assunto</option>
-                                <option>Orçamento de produtos</option>
-                                <option>Orçamento de areia p/ serviços</option>
-                                <option>Dúvidas sobre produtos</option>
-                                <option>Parceria comercial</option>
-                                <option>Logística / Entrega</option>
-                                <option>Outros</option>
-                            </select>
-                        </div>
-                        <div class="field form-full">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem"
-                                placeholder="Descreva sua necessidade, projeto ou dúvida..." required></textarea>
-                        </div>
+            <!-- Lado Direito: Formulário -->
+            <div class="form-side">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" class="form-control" placeholder="Seu nome" required>
                     </div>
-
-                    <div class="form-submit">
-                        <button type="submit" class="btn-submit">
-                            Enviar mensagem
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                                <polyline points="12 5 19 12 12 19"/>
-                            </svg>
-                        </button>
-                        <a href="https://wa.me/5511973220218" target="_blank" class="btn-wpp-inline">
-                            <svg class="wpp-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            ou chamar no WhatsApp
-                        </a>
+                    <div class="form-group">
+                        <label for="email">E-mail Corporativo</label>
+                        <input type="email" id="email" class="form-control" placeholder="seu@email.com" required>
                     </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Ex: Orçamento de Areia Filtrante" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" placeholder="Como podemos ajudar a sua empresa?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        Enviar Mensagem <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </form>
             </div>
 
-            <!-- SUCCESS STATE -->
-            <div class="form-success" id="formSuccess">
-                <div class="success-icon">✅</div>
-                <h3>Mensagem enviada!</h3>
-                <p>Obrigado pelo contato. Nossa equipe retornará em breve pelo e-mail ou telefone informado.</p>
-                <a href="https://wa.me/5511973220218" target="_blank" class="btn-submit"
-                    style="margin-top:8px;text-decoration:none">
-                    Chamar no WhatsApp →
-                </a>
-            </div>
         </div>
-    </section>
+    </main>
 
-    <!-- STRIP -->
-    <div class="strip">
-        <div class="container">
-            <div class="strip-inner">
-                <div class="strip-item"><span class="strip-dot"></span> Atendimento Seg–Sex, 08h às 18h</div>
-                <div class="strip-item"><span class="strip-dot"></span> Resposta em até 24h úteis</div>
-                <div class="strip-item"><span class="strip-dot"></span> Entregas para todo a região</div>
-                <div class="strip-item"><span class="strip-dot"></span> Orçamento sem compromisso</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <strong>D'Areia Ambiental</strong>
-                    <p>Soluções sustentáveis em areia e areia p/ serviços para sua casa, empresa e projeto.</p>
-                </div>
-                <nav class="footer-nav">
-                    <a href="index.html">Início</a>
-                    <div class="dropdown" id="dropdownProdutosFooter">
-                        <a href="#" onclick="toggleDropdownById(event, 'dropdownProdutosFooter')">Produtos ▾</a>
-                        <div class="dropdown-menu">
-                            <a href="areia-colorida.html"><span class="dropdown-dot"></span> Areia Colorida</a>
-                            <a href="areia-classificada.html"><span class="dropdown-dot"></span> Areia Classificada</a>
-                            <a href="areia-de-gato.html"><span class="dropdown-dot"></span> Areia para Gato</a>
-                            <a href="seixos-rolados.html"><span class="dropdown-dot"></span> Seixos Rolados</a>
-                        </div>
-                    </div>
-                    <div class="dropdown" id="dropdownServicosFooter">
-                        <a href="#" onclick="toggleDropdownById(event, 'dropdownServicosFooter')">Areia p/ Serviços ▾</a>
-                        <div class="dropdown-menu">
-                            <a href="servico-filtro-piscina.html"><span class="dropdown-dot"></span> Filtro de Piscina</a>
-                            <a href="servico-grama-sintetica.html"><span class="dropdown-dot"></span> Grama Sintética</a>
-                            <a href="servico-poco-artesiano.html"><span class="dropdown-dot"></span> Areia para Poço Artesiano</a>
-                            <a href="servico-playground.html"><span class="dropdown-dot"></span> Areia para Playground</a>
-                            <a href="servico-hidro-jateamento.html"><span class="dropdown-dot"></span> Hidro Jateamento</a>
-                            <a href="servico-paisagismo.html"><span class="dropdown-dot"></span> Paisagismo &amp; Decoração</a>
-                        </div>
-                    </div>
-                    <a href="contato.html">Contato</a>
-                </nav>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 D'Areia Ambiental · Todos os direitos reservados</p>
-                <div class="footer-eco">🌿 Empresa comprometida com o meio ambiente</div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- FAB WhatsApp flutuante -->
-    <a href="https://wa.me/5511973220218" target="_blank" class="fab-wpp" aria-label="Chamar no WhatsApp">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/551140028922" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 D'Areia Ambiental. Todos os direitos reservados. Desvolvido com foco em sustentabilidade.</p>
+    </footer>
+
+    <!-- INTERATIVIDADE (JAVASCRIPT) -->
     <script>
-        (function () {
-            var menu = document.getElementById('menu');
-            var hamburger = document.getElementById('hamburger');
+        // Lógica do Menu Hambúrguer Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuIcon = menuToggle.querySelector('i');
 
-            window.toggleMenu = function () {
-                var isOpen = menu.classList.toggle('show');
-                hamburger.classList.toggle('ativo', isOpen);
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            };
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Alterna o ícone entre barras e 'X'
+            if (navMenu.classList.contains('active')) {
+                menuIcon.className = 'fa-solid fa-xmark';
+            } else {
+                menuIcon.className = 'fa-solid fa-bars';
+            }
+        });
 
-            window.closeMenu = function () {
-                menu.classList.remove('show');
-                hamburger.classList.remove('ativo');
-                document.body.style.overflow = '';
-            };
-
-            window.toggleDropdownById = function (e, id) {
-                e.preventDefault();
-                e.stopPropagation();
-                var el = document.getElementById(id);
-                if (!el) return;
-                document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                    if (d !== el) d.classList.remove('open');
+        // Lógica para abrir os dropdowns ao clicar no Mobile
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            if(item.querySelector('.dropdown')) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault(); // Previne o clique se for mobile para abrir o submenu
+                        item.classList.toggle('open');
+                    }
                 });
-                el.classList.toggle('open');
-            };
-
-            document.addEventListener('DOMContentLoaded', function () {
-                if (!menu.querySelector('.menu-close-btn')) {
-                    var closeBtn = document.createElement('button');
-                    closeBtn.className = 'menu-close-btn';
-                    closeBtn.setAttribute('aria-label', 'Fechar menu');
-                    closeBtn.innerHTML = '&#x2715;';
-                    closeBtn.onclick = window.closeMenu;
-                    menu.insertBefore(closeBtn, menu.firstChild);
-                }
-
-                menu.querySelectorAll(':scope > a').forEach(function (a) {
-                    a.addEventListener('click', function () {
-                        if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
-                        window.closeMenu();
-                    });
-                });
-
-                menu.querySelectorAll('.dropdown-menu a').forEach(function (a) {
-                    a.addEventListener('click', function () { window.closeMenu(); });
-                });
-            });
-
-            document.addEventListener('click', function (e) {
-                if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-                    window.closeMenu();
-                }
-                document.querySelectorAll('.dropdown.open').forEach(function (d) {
-                    if (!d.contains(e.target)) d.classList.remove('open');
-                });
-            });
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') window.closeMenu();
-            });
-        })();
-
-        function handleSubmit(e) {
-            e.preventDefault();
-            var nome = document.getElementById('nome').value.trim();
-            var email = document.getElementById('email').value.trim();
-            var mensagem = document.getElementById('mensagem').value.trim();
-            var valid = true;
-
-            [['nome', nome], ['email', email], ['mensagem', mensagem]].forEach(function (pair) {
-                var el = document.getElementById(pair[0]);
-                if (!pair[1]) {
-                    el.style.borderColor = '#c0392b';
-                    el.addEventListener('input', function () { el.style.borderColor = ''; }, { once: true });
-                    valid = false;
-                }
-            });
-
-            if (!valid) return;
-
-            var btn = document.querySelector('.btn-submit');
-            btn.textContent = 'Enviando…';
-            btn.disabled = true;
-
-            setTimeout(function () {
-                document.getElementById('formWrap').style.display = 'none';
-                var s = document.getElementById('formSuccess');
-                s.style.display = 'flex';
-            }, 900);
-        }
+            }
+        });
     </script>
-
 </body>
 </html>
